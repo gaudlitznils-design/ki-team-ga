@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<title>Unser KI-Team</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&display=swap">
+<style>
+/* Layout: freundliche Team-Seite. Hero mit Gruppenbild, drei Profile, Essensplan in vier Schritten, schlichte Gerichte-Liste. Eine Spalte, max 1040px. */
+:root{
+  --bg:#F5F6F2; --card:#FFFFFF; --ink:#1F2723; --soft:#5E6B64; --line:#E2E6DF;
+  --c-kunibert:#D9861C; --s-kunibert:#FCEBD2;
+  --c-gustav:#23847E; --s-gustav:#D9EFEC;
+  --c-teamchef:#6D4FA0; --s-teamchef:#ECE5F7;
+  --c-other:#5E6B64; --s-other:#E8ECE6;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141917; --card:#1D2421; --ink:#ECF0EC; --soft:#A3AFA8; --line:#2D3632;
+  --c-kunibert:#F2AC4E; --s-kunibert:#3A2C17;
+  --c-gustav:#5CC2BA; --s-gustav:#173431;
+  --c-teamchef:#B39AE0; --s-teamchef:#2D2540;
+  --c-other:#A3AFA8; --s-other:#2A322E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141917; --card:#1D2421; --ink:#ECF0EC; --soft:#A3AFA8; --line:#2D3632;
+  --c-kunibert:#F2AC4E; --s-kunibert:#3A2C17;
+  --c-gustav:#5CC2BA; --s-gustav:#173431;
+  --c-teamchef:#B39AE0; --s-teamchef:#2D2540;
+  --c-other:#A3AFA8; --s-other:#2A322E; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--c-teamchef);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.08;text-wrap:balance;font-weight:800}
+h2{font-size:clamp(30px,5vw,44px);letter-spacing:-.015em}
+h3{font-size:24px}
+p{margin:0}
+.intro{color:var(--soft);max-width:56ch;margin-top:12px;font-size:18px}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-block:12px}
+.brand{font-family:var(--f-display);font-weight:800;font-size:19px;text-decoration:none;margin-right:auto;white-space:nowrap}
+.top nav{display:flex;gap:2px}
+.top nav a{text-decoration:none;font-weight:600;font-size:15px;padding:6px 12px;border-radius:999px}
+.top nav a:hover{background:var(--card)}
+
+/* Hero */
+.hero{padding-block:56px 40px;text-align:center}
+.group{display:flex;justify-content:center;margin-bottom:28px}
+.group .av{width:132px;height:132px;margin:0 -10px;border:5px solid var(--bg);border-radius:50%;transition:transform .2s}
+.group .av:nth-child(2){width:150px;height:150px;margin-top:-10px;position:relative;z-index:1}
+.group a:hover .av{transform:translateY(-6px)}
+.hero-img{margin:0 auto 28px;max-width:720px;border-radius:20px;overflow:hidden}
+.hero-img img{display:block;width:100%;height:auto}
+.hero h1{font-size:clamp(46px,9vw,88px);letter-spacing:-.025em}
+.hero .intro{margin-left:auto;margin-right:auto}
+.howto{display:inline-block;margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 18px;font-size:16px;max-width:100%}
+
+section{padding-block:64px}
+
+/* Profile */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:36px}
+.person{background:var(--card);border-radius:22px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;min-width:0;border:1px solid var(--line)}
+.person .av{width:120px;height:120px}
+.person h3{font-size:30px}
+.role{font-weight:800;font-size:15px;color:var(--pc);margin-top:-8px}
+.person .about{color:var(--soft);font-size:16px}
+.quote{position:relative;background:var(--ps);color:var(--ink);font-weight:600;padding:10px 16px;border-radius:16px;font-size:16px}
+.quote::before{content:"";position:absolute;top:-8px;left:50%;margin-left:-8px;border:8px solid transparent;border-top:0;border-bottom-color:var(--ps)}
+.can{list-style:none;margin:6px 0 0;padding:0;text-align:left;width:100%;display:flex;flex-direction:column;gap:10px}
+.can li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px}
+.can li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--pc);margin-top:7px;justify-self:center}
+.can b{display:block;font-size:16px}
+.can span{color:var(--soft)}
+.ask{margin-top:auto;width:100%;padding-top:14px;border-top:1px dashed var(--line);font-size:15px;color:var(--soft)}
+.ask q{display:block;color:var(--ink);font-weight:600;margin-top:2px;quotes:"„" "“"}
+
+/* Essensplan */
+.plan-band{background:var(--s-kunibert)}
+.steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:s}
+.steps li{background:var(--card);border-radius:18px;padding:22px 20px;counter-increment:s;min-width:0}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--c-kunibert);color:#2B1A00;font-family:var(--f-display);font-weight:800;font-size:19px;margin-bottom:14px}
+.steps .when{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--soft)}
+.steps b{display:block;font-family:var(--f-display);font-size:21px;margin:2px 0 6px}
+.steps p{font-size:15px;color:var(--soft)}
+.plan-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:36px;align-items:start}
+.week{background:var(--card);border-radius:18px;padding:22px 22px 18px}
+.week h3{font-size:20px;margin-bottom:12px}
+.day{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:15px}
+.day .wd{font-weight:800;color:var(--soft)}
+.day .who{font-size:13px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--bg);color:var(--soft);white-space:nowrap}
+.day .rest{color:var(--soft);font-style:italic}
+.facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.facts li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.facts .ic{width:44px;height:44px;border-radius:12px;background:var(--card);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:15px;color:var(--c-kunibert)}
+.facts b{display:block}
+.facts span{color:var(--soft);font-size:15px}
+
+/* Gerichte */
+.dish-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:30px}
+.tabs{display:flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px}
+.tab{font:inherit;font-weight:700;font-size:15px;border:0;background:none;color:var(--soft);padding:7px 14px;border-radius:999px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.search{flex:1 1 220px;font:inherit;font-size:16px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-width:0}
+.dishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:20px}
+.dish{background:var(--card);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);min-width:0}
+.dish h3{font-family:var(--f-body);font-size:17px;font-weight:800;line-height:1.3}
+.dish p{font-size:14px;color:var(--soft)}
+.dish .meta{margin-top:auto;padding-top:6px;font-size:13px;color:var(--soft);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.dish .meta a{margin-left:auto;font-weight:800;color:var(--c-teamchef);text-decoration:none}
+.badge{align-self:flex-start;font-size:12px;font-weight:800;padding:2px 10px;border-radius:999px}
+.badge.neu{background:var(--s-teamchef);color:var(--c-teamchef)}
+.badge.fav{background:var(--s-kunibert);color:var(--c-kunibert)}
+.more{display:block;margin:24px auto 0;font:inherit;font-weight:800;font-size:15px;padding:10px 22px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.none{grid-column:1/-1;text-align:center;color:var(--soft);padding:28px}
+
+footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14px}
+
+@media (max-width:860px){
+  .people{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .plan-row{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .group .av{width:96px;height:96px;margin:0 -8px}
+  .group .av:nth-child(2){width:110px;height:110px}
+  .steps{grid-template-columns:1fr}
+  .top nav a{padding:6px 8px;font-size:14px}
+  .tabs{width:100%}
+  .tab{flex:1;padding:7px 6px}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#start">KI-Team</a>
+    <nav aria-label="Bereiche">
+      <a href="#team">Team</a>
+      <a href="#essensplan">Essensplan</a>
+      <a href="#gerichte">Gerichte</a>
+    </nav>
+  </div>
+</header>
+
+<main id="start">
+  <div class="wrap hero">
+    <figure class="hero-img" id="hero-img" hidden><img alt="Das KI-Team als gezeichnete Figuren"></figure>
+    <div class="group" id="group"></div>
+    <h1>Unser KI-Team</h1>
+    <p class="intro">Ein paar Helfer, die uns im Alltag Arbeit abnehmen. Sie bereiten vor, wir entscheiden.</p>
+    <p class="howto">Claude-App öffnen, neuen Chat starten und einfach mit dem Namen anfangen.</p>
+  </div>
+
+  <section id="team">
+    <div class="wrap">
+      <h2>Das sind wir</h2>
+      <div class="people" id="people"></div>
+    </div>
+  </section>
+
+  <section id="essensplan" class="plan-band">
+    <div class="wrap">
+      <h2>So entsteht unser Essensplan</h2>
+      <p class="intro">Kunibert plant das Abendessen von Freitag bis Donnerstag. Ein paar Minuten pro Woche, dann steht der Plan.</p>
+      <ol class="steps">
+        <li><span class="when">Mittwochabend</span><b>Fragen</b><p>„Kunibert, plan die Woche.“ Reste oder Wünsche gleich dazusagen.</p></li>
+        <li><span class="when">Sofort</span><b>Vorschlag</b><p>Er kennt unsere Termine und weiß, wer wann kocht und wie viel Zeit ist.</p></li>
+        <li><span class="when">Gemeinsam</span><b>Anpassen</b><p>Tauschen, was nicht passt. Dann „eintragen“ sagen.</p></li>
+        <li><span class="when">Freitagmorgen</span><b>Einkaufen</b><p>Der Plan kommt nach Trello, Nils kauft ein.</p></li>
+      </ol>
+      <div class="plan-row">
+        <div class="week" id="week"></div>
+        <ul class="facts">
+          <li><span class="ic">17:45</span><div><b>Gegessen wird um Viertel vor sechs</b><span>Unter der Woche gibt es nur, was bis dahin gut zu schaffen ist.</span></div></li>
+          <li><span class="ic">Sa</span><div><b>Aufwändiges am Wochenende</b><span>Schmorgerichte und Großprojekte kommen auf Samstag oder Sonntag.</span></div></li>
+          <li><span class="ic">Neu</span><div><b>Jede Woche etwas Neues</b><span>Mindestens ein neues Gericht ist dabei. Schmeckt es nicht, sagt es Kunibert.</span></div></li>
+          <li><span class="ic">Do</span><div><b>Donnerstag ist Resteessen</b><span>Was übrig ist, wird gegessen. Reste und Angebote plant Kunibert mit ein.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="gerichte">
+    <div class="wrap">
+      <h2>Was bei uns auf den Tisch kommt</h2>
+      <p class="intro" id="dish-intro"></p>
+      <div class="dish-head">
+        <div class="tabs" role="tablist" aria-label="Auswahl">
+          <button class="tab" role="tab" data-t="alle" type="button">Alle</button>
+          <button class="tab" role="tab" data-t="fav" type="button">Lieblinge</button>
+          <button class="tab" role="tab" data-t="neu" type="button">Neu zum Ausprobieren</button>
+        </div>
+        <input class="search" id="q" type="search" placeholder="Suchen, z. B. Kürbis" aria-label="Gerichte durchsuchen">
+      </div>
+      <div class="dishes" id="dishes"></div>
+      <button class="more" id="more" type="button" hidden>Alle zeigen</button>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap" id="foot"></div></footer>
+
+<script type="application/json" id="kiteam-data">{"stand":"2026-11-05","team":[{"name":"Kunibert","skill":"kunibert","rolle":"Unser Koch","kurz":"Kümmert sich um alles rund ums Abendessen: was wir kochen, was noch da ist und was es Neues gibt.","anrede":["Kunibert","Koch Kunibert"],"stimme":"Na, was steht an?","beispiele":["Kunibert, was kochen wir nächste Woche?","Kunibert, Hackfleisch muss weg."],"status":"aktiv","faehigkeiten":[{"name":"Woche planen","skill":"woche-planen","text":"Ich schaue in eure Kalender und schlage vor, wer wann was kocht."},{"name":"Neue Gerichte finden","skill":"gerichte-erfinden","text":"Sagt mir, worauf ihr Lust habt, ich bringe drei Ideen mit."},{"name":"Rezepte schreiben","skill":"rezepte-schreiben","text":"Aus Link, Foto oder Kochbuch mache ich ein Rezept für uns vier."},{"name":"Vorrat merken","skill":null,"text":"Reste und Angebote merke ich mir und baue sie in den Plan ein."},{"name":"Aussortieren","skill":null,"text":"War ein Gericht nix, fliegt es raus oder kommt seltener."}]},{"name":"Gustav","skill":"gustav","rolle":"Unser Prüfer","kurz":"Schaut jede Woche nach, ob im Team alles stimmt, und notiert, was ihm auffällt.","anrede":["Gustav","Prüfer Gustav"],"stimme":"Keine Mängel. Plakette gibt's.","beispiele":["Gustav, prüf mal Kunibert."],"status":"aktiv","faehigkeiten":[{"name":"Rundgang","skill":null,"text":"Jeden Sonntagabend prüfe ich Daten und Abläufe aller Kollegen."},{"name":"Mängel melden","skill":null,"text":"Was mir auffällt, schreibe ich auf. Repariert wird nur nach Absprache."}]},{"name":"Teamchef","skill":"teamchef","rolle":"Unser Teamchef","kurz":"Stellt neue Assistenten ein und hilft den anderen, im Alltag besser zu werden.","anrede":["Teamchef"],"stimme":"Neuer Kandidat? Erzähl.","beispiele":["Teamchef, ich brauche einen Assistenten fürs Auto."],"status":"aktiv","faehigkeiten":[{"name":"Kollegen einstellen","skill":null,"text":"Braucht ein Thema einen eigenen Assistenten, finde ich Namen und Aufgaben."},{"name":"Kollegen verbessern","skill":null,"text":"Klappt etwas im Alltag nicht, passe ich die Regeln an."},{"name":"Ordnung halten","skill":null,"text":"Ich führe die Akten des Teams und arbeite Gustavs Liste ab."}]}],"gerichte":[{"n":"Pasta Verdura","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"variabel","beliebt":"Favorit","rezept":"","zuletzt":"2026-10-16","text":"Pasta mit Aubergine, Zucchini und Kirschtomaten, Parmesan obendrauf.","status":"bewährt","varianten":["vegetarisch","mit Salsiccia","mit Parmaschinken"]},{"n":"Griechenland-Blech","koch":"beide","aufwand":"einfach","dauer":75,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"Vegetarisch","beliebt":"Favorit","rezept":"","zuletzt":"","text":"Kartoffeln und Zucchini vom Blech mit Oliven, Feta und Zitrone, dazu Zaziki.","status":"bewährt","varianten":[]},{"n":"Provence-Blech","koch":"beide","aufwand":"einfach","dauer":75,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"Vegetarisch","beliebt":"Favorit","rezept":"","zuletzt":"2026-10-15","text":"Kartoffeln und Möhren vom Blech mit Fenchel, Ziegenkäse und Orange.","status":"bewährt","varianten":[]},{"n":"Kartoffel-Süßkartoffel-Blech mit Zwiebeln & Feta","koch":"Nils","aufwand":"einfach","dauer":75,"solo":"ja","saison":"HW","basis":"Kartoffel","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Kartoffeln und Süßkartoffeln vom Blech mit Zwiebeln und Feta.","status":"bewährt","varianten":[]},{"n":"Italienischer Nudelsalat","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FS","basis":"Pasta","eiweiss":"Vegetarisch","beliebt":"Favorit","rezept":"","zuletzt":"","text":"Nudelsalat mit getrockneten Tomaten, schwarzen Oliven und Rucola, mit rotem Pesto und Parmesan.","status":"bewährt","varianten":[]},{"n":"Griechischer Nudelsalat","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FS","basis":"Pasta","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Nudelsalat mit Oliven, Tomaten, Gurke und Mais in Joghurtdressing, dazu Souvlaki vom Grill.","status":"bewährt","varianten":[]},{"n":"Thunfisch-Nudelsalat mit Gurke","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FS","basis":"Pasta","eiweiss":"Fisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Nudelsalat mit Thunfisch und Gurke.","status":"bewährt","varianten":[]},{"n":"Zitronenpasta","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-14","text":"Pasta mit Zitrone und Parmesan.","status":"bewährt","varianten":[]},{"n":"Spaghetti Pesto","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Spaghetti mit Pesto.","status":"bewährt","varianten":[]},{"n":"Pasta Puttanesca","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"Fisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Pasta in Tomatensauce mit Sardellen, Kapern und schwarzen Oliven.","status":"bewährt","varianten":[]},{"n":"Spaghetti Bolognese","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FSHW","basis":"Pasta","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-04","text":"Spaghetti mit Hackfleischsauce und Parmesan.","status":"bewährt","varianten":[]},{"n":"Nudeln mit Frischkäse-Brokkoli-Sauce & Kochschinken","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Nudeln in cremiger Frischkäse-Sauce mit Brokkoli und Kochschinken.","status":"bewährt","varianten":[]},{"n":"Tortelliniauflauf mit Salat","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FSHW","basis":"Pasta","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-12","text":"Überbackene Tortellini mit Champignons in Sahnesauce, dazu Salat.","status":"bewährt","varianten":[]},{"n":"Kritharaki-Auflauf mit Hackfleisch","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FSHW","basis":"Pasta","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Überbackener Auflauf aus Kritharaki (griechische Nudeln) und Hackfleisch.","status":"bewährt","varianten":[]},{"n":"Gnocchi-Pfanne mit Aubergine, Zucchini & Serrano","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-08","text":"Gnocchi aus der Pfanne mit Aubergine, Zucchini und Serrano-Schinken, Parmesan darüber.","status":"bewährt","varianten":[]},{"n":"Reisbowl mit Teriyaki-Hähnchen","koch":"Nils","aufwand":"aufwändig","dauer":75,"solo":"nein","saison":"FSHW","basis":"Reis","eiweiss":"Geflügel","beliebt":"Normal","rezept":"","zuletzt":"2026-10-02","text":"Sushireis-Bowl mit Teriyaki-Hähnchen, Avocado, Gurke und Mango.","status":"bewährt","varianten":[]},{"n":"Reisbowl mit Garnelen & Edamame","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Reis","eiweiss":"Fisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Reisbowl mit Garnelen, Edamame, Mango und Avocado.","status":"bewährt","varianten":[]},{"n":"Hähncheninnenfilet aus dem Ofen mit Reis & Brokkoli-Frischkäse-Sauce","koch":"Miriam","aufwand":"mittel","dauer":45,"solo":"nein","saison":"FSHW","basis":"Reis","eiweiss":"Geflügel","beliebt":"Favorit","rezept":"","zuletzt":"","text":"Hähncheninnenfilet aus dem Ofen mit Reis und Brokkoli-Frischkäse-Sauce.","status":"bewährt","varianten":[]},{"n":"Reis mit Kochschinken & Pilzrahmsauce","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Reis","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Reis mit Kochschinken in Champignon-Rahmsauce.","status":"bewährt","varianten":[]},{"n":"Reissalat mit Paprika, Gouda & Joghurtdressing","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FS","basis":"Reis","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Reissalat mit Paprika, Gouda, Gurke und Mais, mit Joghurtdressing.","status":"bewährt","varianten":[]},{"n":"Reis mit fertigem Hähnchen & Soßen","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Reis","eiweiss":"Geflügel","beliebt":"Normal","rezept":"","zuletzt":"","text":"Mikrowellenreis mit gekauftem Hähnchen und Soßen.","status":"bewährt","varianten":[]},{"n":"Kartoffelstampf mit Erbsen & Möhren","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"variabel","beliebt":"Normal","rezept":"","zuletzt":"2026-10-05","text":"Kartoffelstampf mit Erbsen und Möhren.","status":"bewährt","varianten":["mit Hähnchenbrust","mit Bratwürstchen & Schmelzzwiebeln","mit Rührei","mit Frikadellen"]},{"n":"Kartoffel-Möhren-Stampf mit Wirsing-Hack-Pfanne","koch":"beide","aufwand":"mittel","dauer":75,"solo":"nein","saison":"HW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-09-29","text":"Kartoffel-Möhren-Stampf mit Wirsing-Hackfleisch-Pfanne.","status":"bewährt","varianten":[]},{"n":"Spitzkohl-Hack-Pfanne mit Kartoffelstampf","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"ja","saison":"HW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-21","text":"Hackfleisch-Pfanne mit Spitzkohl, dazu Kartoffelstampf.","status":"bewährt","varianten":[]},{"n":"Kartoffeln, Spinat & Ei mit Kräuterquark","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Kartoffeln mit Spinat und Ei, dazu Kräuterquark.","status":"bewährt","varianten":[]},{"n":"Fischstäbchen mit Kartoffelstampf & Spinat","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"Fisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Fischstäbchen mit Kartoffelstampf und Spinat.","status":"bewährt","varianten":[]},{"n":"Labskaus","koch":"Nils","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FHW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-20","text":"Norddeutscher Klassiker aus Kartoffeln, Corned Beef und Roter Bete, mit Ei und Gewürzgurke.","status":"bewährt","varianten":[]},{"n":"Leberkäse-Lauch-Pfanne mit Ofenkartoffeln & Spiegelei","koch":"Nils","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FSHW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-10","text":"Leberkäse und Lauch aus der Pfanne, dazu Ofenkartoffeln und Spiegelei.","status":"bewährt","varianten":[]},{"n":"Süßkartoffelpüree loaded","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"HW","basis":"Kartoffel","eiweiss":"variabel","beliebt":"Normal","rezept":"","zuletzt":"","text":"Süßkartoffelpüree mit Feta, Mais, Roter Bete und grünen Bohnen.","status":"bewährt","varianten":["vegetarisch","mit Hähnchen"]},{"n":"Italienische Gemüsepfanne mit cremiger Polenta","koch":"Miriam","aufwand":"mittel","dauer":45,"solo":"nein","saison":"FS","basis":"Sonstiges","eiweiss":"variabel","beliebt":"Normal","rezept":"","zuletzt":"","text":"Gemüsepfanne mit Zucchini, Zwiebeln und Knoblauch auf cremiger Polenta.","status":"bewährt","varianten":["klassisch mit Knoblauchsalami","einfach mit Kirschtomaten & Parmesan"]},{"n":"Kürbissuppe mit Bratwurst-Klößchen & Baguette","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"HW","basis":"Brot","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-17","text":"Cremige Kürbissuppe mit Orangensaft, dazu Bratwurst-Klößchen und Baguette.","status":"bewährt","varianten":[]},{"n":"Kürbiseintopf","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"HW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-13","text":"Deftiger Eintopf mit Kürbis, Kartoffeln und Fleisch.","status":"bewährt","varianten":[]},{"n":"Gazpacho mit Baguette","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FS","basis":"Brot","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Kalte Tomatensuppe mit Gurke und Paprika, dazu Baguette.","status":"bewährt","varianten":[]},{"n":"Schwedische Sommersuppe","koch":"beide","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FSHW","basis":"Brot","eiweiss":"Fisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Cremige Suppe mit Lachs, Kartoffeln und Lauch.","status":"bewährt","varianten":[]},{"n":"Green Goddess Salad","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSH","basis":"Brot","eiweiss":"Fisch","beliebt":"Favorit","rezept":"","zuletzt":"2026-10-19","text":"Salat mit Avocado, Spitzkohl, Gurke und Schnittlauch, dazu Vollkornbaguette.","status":"bewährt","varianten":["mit Garnelen","mit Lachs aus dem Ofen"]},{"n":"Wassermelonen-Feta-Salat mit Hähnchen & Baguette","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FS","basis":"Brot","eiweiss":"Geflügel","beliebt":"Normal","rezept":"","zuletzt":"","text":"Salat mit Wassermelone, Feta und Minze, dazu Hähnchen und Baguette.","status":"bewährt","varianten":[]},{"n":"Hähnchen mit Brokkolisalat & Baguette","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"S","basis":"Brot","eiweiss":"Geflügel","beliebt":"Normal","rezept":"","zuletzt":"","text":"Hähnchen mit Brokkolisalat, dazu Baguette.","status":"bewährt","varianten":[]},{"n":"Flabatta mit Burrata, Tomaten & Rucola","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FS","basis":"Brot","eiweiss":"variabel","beliebt":"Normal","rezept":"","zuletzt":"","text":"Flabatta mit Burrata, Tomaten und Rucola.","status":"bewährt","varianten":["mit Salami","mit Avocado"]},{"n":"Croque","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Brot","eiweiss":"variabel","beliebt":"Normal","rezept":"","zuletzt":"","text":"Überbackenes Baguette, klassisch mit Käse, Kochschinken und Frischkäse.","status":"bewährt","varianten":["Ziegenkäse-Birne","Griechisch","Pizza-Croque","Coronation Chicken","Tex-Mex","Brie-Preiselbeer"]},{"n":"Hotdogs","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Brot","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Würstchen im Hotdog-Brötchen.","status":"bewährt","varianten":[]},{"n":"Wraps mit Thunfischcreme","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Brot","eiweiss":"Fisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Wraps mit Thunfischcreme, Gurke, Salat und Mais.","status":"bewährt","varianten":[]},{"n":"Abendbrot / Brotzeit","koch":"beide","aufwand":"einfach","dauer":30,"solo":"ja","saison":"FSHW","basis":"Brot","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Brot mit Aufschnitt, schnell und ohne Kochen.","status":"bewährt","varianten":[]},{"n":"Pizza selbstgemacht","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FSHW","basis":"Brot","eiweiss":"variabel","beliebt":"Favorit","rezept":"","zuletzt":"2026-10-09","text":"Selbstgemachte Pizza aus dem Pizza-Kit mit Käse, dazu Tomate-Mozzarella-Salat.","status":"bewährt","varianten":["mit Oliven, Salami, Kapern & Zwiebeln"]},{"n":"Grill-Wraps mit Hähnchen, Zucchini & Feta","koch":"Nils","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FS","basis":"Brot","eiweiss":"Geflügel","beliebt":"Favorit","rezept":"","zuletzt":"","text":"Gegrillte Wraps mit Hähnchen, Zucchini, Feta und Frischkäse.","status":"bewährt","varianten":[]},{"n":"Würstchen mit Krautsalat im Brötchen vom Grill","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FS","basis":"Brot","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Gegrillte Würstchen mit Krautsalat im Brötchen.","status":"bewährt","varianten":[]},{"n":"Bratkartoffelsalat mit Hähnchen & Nürnbergern vom Grill","koch":"Nils","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FS","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Bratkartoffelsalat mit gegrilltem Hähnchen und Nürnberger Würstchen.","status":"bewährt","varianten":[]},{"n":"Kartoffelsalat mit Bockwurst & Frikadellen","koch":"beide","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FS","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Kartoffelsalat mit Bockwurst und Frikadellen.","status":"bewährt","varianten":[]},{"n":"Zarollo","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FSHW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Favorit","rezept":"","zuletzt":"2026-09-28","text":"Aufgerollter Ofenboden aus Ei, Kartoffeln, Zucchini und Möhren, gefüllt mit Frischkäse, Kochschinken und Eisbergsalat.","status":"bewährt","varianten":[]},{"n":"Pasta Aglio e Olio","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"","zuletzt":"2026-11-03","text":"Pasta mit Knoblauch, Chili und Tomaten, Parmesan obendrauf.","status":"bewährt","varianten":[]},{"n":"Szegediner Gulasch","koch":"Nils","aufwand":"aufwändig","dauer":120,"solo":"nein","saison":"HW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Selten","rezept":"","zuletzt":"","text":"Schmorgulasch aus Schweinenacken mit Sauerkraut und Schmand, dazu Kartoffeln.","status":"bewährt","varianten":[]},{"n":"Thai-Curry","koch":"Nils","aufwand":"mittel","dauer":45,"solo":"nein","saison":"FSHW","basis":"Reis","eiweiss":"Geflügel","beliebt":"Normal","rezept":"","zuletzt":"2026-10-25","text":"Curry mit Kokosmilch, Hähnchen und Ingwer, dazu Reis und Erdnüsse.","status":"bewährt","varianten":[]},{"n":"Bún bò Nam Bộ","koch":"Nils","aufwand":"mittel","dauer":45,"solo":"nein","saison":"FSHW","basis":"Pasta","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Vietnamesischer Nudelsalat mit Rindersteak, Gurke, Minze, Koriander, Erdnüssen und Röstzwiebeln.","status":"bewährt","varianten":[]},{"n":"Butter Chicken","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FSHW","basis":"Reis","eiweiss":"Geflügel","beliebt":"Normal","rezept":"","zuletzt":"","text":"Hähnchen in cremiger Tomaten-Butter-Sauce, dazu Reis.","status":"bewährt","varianten":[]},{"n":"Thunfischpasta","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"Fisch","beliebt":"Favorit","rezept":"1KWDnDm0RgtMgBdLufZ7IHRQ6btE9E3czIlTXKa7jYz0","zuletzt":"2026-10-24","text":"Pasta in Tomatensauce mit Thunfisch und Kapern, Parmesan darüber.","status":"bewährt","varianten":[]},{"n":"Wirsing-Hack-Pfanne mit Champignons","koch":"Miriam","aufwand":"mittel","dauer":60,"solo":"nein","saison":"HW","basis":"variabel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"1F7LXqMbDVhfcS9VzAkGIlZBP08-vEAfnbSi_t0WUUbI","zuletzt":"","text":"Hackfleisch-Pfanne mit Wirsing und Champignons in Sahne, Beilage nach Wahl.","status":"bewährt","varianten":[]},{"n":"Rouladenpfanne","koch":"Miriam","aufwand":"mittel","dauer":90,"solo":"nein","saison":"HW","basis":"Pasta","eiweiss":"Fleisch","beliebt":"Normal","rezept":"1vmQlzmqCRdxkrtIhpkJbK4YEnFABoRVP088zOUX4DE0","zuletzt":"","text":"Rouladenpfanne mit Bacon, Zwiebeln, Senf und Gewürzgurken, dazu Bandnudeln.","status":"bewährt","varianten":["mit Rotwein"]},{"n":"Türkische Pasta","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"variabel","beliebt":"Normal","rezept":"1baeinEhdcI_PTwl1mHGuD3-Mq_QZBhPj6F4zczV0hYk","zuletzt":"2026-10-28","text":"Pasta mit Hackfleisch, Knoblauchjoghurt und Paprika-Minze-Butter.","status":"bewährt","varianten":["mit Veggi-Hack"]},{"n":"One Pot Spitzkohl-Pasta","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"HW","basis":"Pasta","eiweiss":"Vegetarisch","beliebt":"Normal","rezept":"1GDwvHitjntlKOryguN0X6-Qw2Ylb5nXTihrUFX5okAY","zuletzt":"2026-11-04","text":"Cremige One-Pot-Pasta mit Spitzkohl, Frischkäse und Parmesan.","status":"bewährt","varianten":[]},{"n":"Zwiebelkuchen mit Crackerboden","koch":"Miriam","aufwand":"mittel","dauer":75,"solo":"nein","saison":"HW","basis":"Sonstiges","eiweiss":"Fleisch","beliebt":"Normal","rezept":"15u0BrXlwxmdLUOZApF_wNftYslrdS32nnaUeaP4AQBE","zuletzt":"","text":"Herzhafter Zwiebelkuchen mit Speck auf Crackerboden, dazu Salat.","status":"bewährt","varianten":[]},{"n":"Königsberger Klopse","koch":"Nils","aufwand":"aufwändig","dauer":75,"solo":"nein","saison":"FHW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Fleischklopse in Kapernsauce mit Kartoffeln und Roter Bete.","status":"bewährt","varianten":[]},{"n":"Türkisches Hackfleisch","koch":"Nils","aufwand":"mittel","dauer":75,"solo":"nein","saison":"FSHW","basis":"Brot","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Würziges Hackfleisch mit Aubergine, Spitzpaprika und Tomaten, dazu Joghurt und Feta.","status":"bewährt","varianten":[]},{"n":"Pelmeni","koch":"Nils","aufwand":"einfach","dauer":30,"solo":"ja","saison":"FSHW","basis":"Sonstiges","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Russische Teigtaschen aus dem Tiefkühler, mit Butter und Knoblauchöl.","status":"bewährt","varianten":[]},{"n":"Tiefkühlpizza","koch":"beide","aufwand":"einfach","dauer":30,"solo":"ja","saison":"FSHW","basis":"Brot","eiweiss":"variabel","beliebt":"Normal","rezept":"","zuletzt":"2026-10-31","text":"Tiefkühlpizza aus dem Ofen.","status":"bewährt","varianten":[]},{"n":"Döner holen","koch":"beide","aufwand":"einfach","dauer":30,"solo":"nein","saison":"FSHW","basis":"Brot","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Döner vom Imbiss, wird geholt statt gekocht.","status":"bewährt","varianten":[]},{"n":"Apfel-Sellerie-Suppe","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"HW","basis":"Brot","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-26","text":"Cremige Suppe aus Sellerie und Äpfeln, mit Schinkenwürfeln und Baguette.","status":"bewährt","varianten":[]},{"n":"Möhrensuppe mit Baguette","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"HW","basis":"Brot","eiweiss":"variabel","beliebt":"Normal","rezept":"","zuletzt":"2026-10-23","text":"Möhrensuppe mit Kartoffeln, dazu Baguette.","status":"bewährt","varianten":["mit Frikadellen","mit Bockwurst","ohne Einlage"]},{"n":"Frikadellen-Brötchen mit Krautsalat","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Brot","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-11-02","text":"Frikadellen im Brötchen mit Krautsalat, süßem Senf und Gewürzgurken.","status":"bewährt","varianten":[]},{"n":"Frikadellen in Tomatensauce mit Spaghetti","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Pasta","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Frikadellen in Tomatensauce mit Kapern und Oliven, dazu Spaghetti.","status":"bewährt","varianten":[]},{"n":"Knobi-Parmesan-Hähnchen mit Reis","koch":"beide","aufwand":"mittel","dauer":45,"solo":"ja","saison":"FSHW","basis":"Reis","eiweiss":"Geflügel","beliebt":"Normal","rezept":"","zuletzt":"2026-10-18","text":"Hähnchen in cremiger Knoblauch-Parmesan-Sauce mit Champignons, dazu Reis.","status":"bewährt","varianten":[]},{"n":"Die schnellsten Pizzabrötchen der Welt","koch":"Miriam","aufwand":"einfach","dauer":30,"solo":"ja","saison":"FSHW","basis":"Brot","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Pizzabrötchen mit Salami, Kochschinken und Champignons, mit Käse überbacken.","status":"bewährt","varianten":[]},{"n":"Kartoffelpott Greek Style","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"Vegetarisch","beliebt":"","rezept":"","zuletzt":"","text":"Salzkartoffeln aus der Presse mit Oliven, Feta, Zaziki und Tomaten.","status":"offen","varianten":[]},{"n":"Feijoada","koch":"beide","aufwand":"mittel","dauer":255,"solo":"ja","saison":"HW","basis":"Reis","eiweiss":"Fleisch","beliebt":"Normal","rezept":"1p5w-fkW8vmKgVFxr3ozlp3_eBwi5wSJf-zLKPo95jRc","zuletzt":"2026-10-27","text":"Brasilianischer Schwarzbohneneintopf mit Rindergulasch, Mettenden und Speck, dazu Reis.","status":"bewährt","varianten":["mit Chorizo"]},{"n":"Nikujaga","koch":"Nils","aufwand":"einfach","dauer":50,"solo":"ja","saison":"HW","basis":"Reis","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Japanischer Eintopf aus Kartoffeln, Möhren und dünn geschnittenem Rindfleisch, süß-salzig in Sojasoße, dazu Reis.","status":"offen","varianten":[]},{"n":"Schweinefilet aus der Heißluftfritteuse","koch":"","aufwand":"","dauer":null,"solo":"","saison":"","basis":"","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"","status":"offen","varianten":[]},{"n":"Kartoffelpott Mediterran","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Salzkartoffeln aus der Presse mit Mozzarella, Parmaschinken, Oliven und Kirschtomaten.","status":"offen","varianten":[]},{"n":"Saltimbocca vom Schweinefilet","koch":"Nils","aufwand":"mittel","dauer":45,"solo":"nein","saison":"FSHW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Schweinefilet-Medaillons mit Parmaschinken und Salbei, mit Zitronenbutter, dazu Kartoffeln und grüne Bohnen.","status":"offen","varianten":[]},{"n":"Sous-vide-Schweinefilet mit Ofenkürbis","koch":"Nils","aufwand":"mittel","dauer":90,"solo":"ja","saison":"HW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Rosa Sous-vide-Schweinefilet mit Ofenkürbis, Kartoffeln und Preiselbeer-Jus.","status":"offen","varianten":[]},{"n":"Souvlaki-Spieße mit Zaziki im Fladenbrot","koch":"Nils","aufwand":"mittel","dauer":60,"solo":"nein","saison":"FSHW","basis":"Brot","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Marinierte Schweinefilet-Spieße mit Zaziki, Tomaten und Gurke im Fladenbrot.","status":"offen","varianten":[]},{"n":"Nasi Goreng mit Schweinefilet","koch":"Nils","aufwand":"mittel","dauer":45,"solo":"nein","saison":"FSHW","basis":"Reis","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Gebratener Reis mit Schweinefilet-Streifen, Ei, Möhren und Frühlingslauch.","status":"offen","varianten":[]},{"n":"Lauwarmer Herbstsalat mit Schweinefilet-Medaillons","koch":"beide","aufwand":"mittel","dauer":40,"solo":"nein","saison":"HW","basis":"Brot","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Lauwarmer Feldsalat mit Birne, Walnüssen, Brie und rosa gebratenen Schweinefilet-Medaillons.","status":"offen","varianten":[]},{"n":"Schweinefilet in Gorgonzolasauce","koch":"Miriam","aufwand":"mittel","dauer":60,"solo":"nein","saison":"FSHW","basis":"variabel","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Schweinefilet in cremiger Gorgonzolasauce, dazu grüne Bohnen.","status":"offen","varianten":[]},{"n":"Schweinefilet mit Champignons in Sahnesauce","koch":"Nils","aufwand":"einfach","dauer":40,"solo":"nein","saison":"FSHW","basis":"variabel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-10-30","text":"Schweinefilet in Champignon-Sahnesauce.","status":"bewährt","varianten":[]},{"n":"Kartoffelpott Popeye","koch":"beide","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"Vegetarisch","beliebt":"","rezept":"","zuletzt":"","text":"Salzkartoffeln aus der Presse mit Spinat, Rührei und Hollandaise.","status":"offen","varianten":[]},{"n":"Kartoffelpott Pilze","koch":"Nils","aufwand":"einfach","dauer":45,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Salzkartoffeln aus der Presse mit Pilzrahmsauce und Kochschinken.","status":"offen","varianten":[]},{"n":"Kartoffelpott Blitz","koch":"beide","aufwand":"einfach","dauer":30,"solo":"ja","saison":"FSHW","basis":"Kartoffel","eiweiss":"Vegetarisch","beliebt":"","rezept":"","zuletzt":"","text":"Salzkartoffeln aus der Presse mit Reibekäse, Butter und Aioli.","status":"offen","varianten":[]},{"n":"Zucchini-Boote mit Salsiccia, Tomate & Feta","koch":"","aufwand":"","dauer":null,"solo":"","saison":"","basis":"","eiweiss":"","beliebt":"","rezept":"","zuletzt":"","text":"","status":"offen","varianten":[]},{"n":"Deftiger Weiße-Bohnen-Eintopf mit Kartoffeln und Speck","koch":"Miriam","aufwand":"einfach","dauer":45,"solo":"ja","saison":"HW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"2026-11-01","text":"Eintopf mit weißen Bohnen, Kartoffeln, Räucherspeck und Mettenden.","status":"bewährt","varianten":[]},{"n":"Berliner Kartoffelsuppe","koch":"beide","aufwand":"einfach","dauer":50,"solo":"ja","saison":"HW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"Normal","rezept":"","zuletzt":"","text":"Cremige Kartoffelsuppe mit Katenschinken, Suppengemüse und Würstchen.","status":"bewährt","varianten":[]},{"n":"Blumenkohl-Käse-Suppe mit Kochschinken-Würfeln","koch":"","aufwand":"","dauer":null,"solo":"","saison":"HW","basis":"Sonstiges","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Cremige Blumenkohl-Käse-Suppe mit Kochschinken-Würfeln.","status":"offen","varianten":[]},{"n":"Brokkoli-Cremesuppe mit gebratenen Hähnchenstreifen","koch":"","aufwand":"","dauer":null,"solo":"","saison":"HW","basis":"Sonstiges","eiweiss":"Geflügel","beliebt":"","rezept":"","zuletzt":"","text":"Cremige Brokkolisuppe mit gebratenen Hähnchenstreifen.","status":"offen","varianten":[]},{"n":"Lauch-Kartoffel-Suppe mit Mettwurst-Scheiben","koch":"","aufwand":"","dauer":null,"solo":"","saison":"HW","basis":"Kartoffel","eiweiss":"Fleisch","beliebt":"","rezept":"","zuletzt":"","text":"Cremige Lauch-Kartoffel-Suppe mit Mettwurst-Scheiben.","status":"offen","varianten":[]},{"n":"Erbsensuppe mit Minze und Croûtons","koch":"","aufwand":"","dauer":null,"solo":"","saison":"FHW","basis":"Sonstiges","eiweiss":"Vegetarisch","beliebt":"","rezept":"","zuletzt":"","text":"Grüne Erbsensuppe mit Minze und Croûtons.","status":"offen","varianten":[]}],"verlauf":[{"d":"2026-09-28","g":"Zarollo","v":"","koch":"Miriam"},{"d":"2026-09-29","g":"Kartoffel-Möhren-Stampf mit Wirsing-Hack-Pfanne","v":"","koch":"Nils"},{"d":"2026-09-30","g":"Green Goddess Salad","v":"mit Garnelen","koch":"Miriam"},{"d":"2026-10-01","g":"Gnocchi-Pfanne mit Aubergine, Zucchini & Serrano","v":"","koch":"Miriam"},{"d":"2026-10-02","g":"Reisbowl mit Teriyaki-Hähnchen","v":"","koch":""},{"d":"2026-10-03","g":"Pizza selbstgemacht","v":"","koch":"Miriam"},{"d":"2026-10-04","g":"Spaghetti Bolognese","v":"","koch":"Miriam"},{"d":"2026-10-05","g":"Kartoffelstampf mit Erbsen & Möhren","v":"","koch":"Nils"},{"d":"2026-10-06","g":"Pasta Verdura","v":"","koch":"Nils"},{"d":"2026-10-07","g":"Kürbissuppe mit Bratwurst-Klößchen & Baguette","v":"","koch":"Miriam"},{"d":"2026-10-08","g":"Gnocchi-Pfanne mit Aubergine, Zucchini & Serrano","v":"","koch":"Miriam"},{"d":"2026-10-09","g":"Pizza selbstgemacht","v":"","koch":"Nils"},{"d":"2026-10-10","g":"Leberkäse-Lauch-Pfanne mit Ofenkartoffeln & Spiegelei","v":"","koch":"Nils"},{"d":"2026-10-12","g":"Tortelliniauflauf mit Salat","v":"","koch":"Miriam"},{"d":"2026-10-13","g":"Kürbiseintopf","v":"","koch":"Miriam"},{"d":"2026-10-14","g":"Zitronenpasta","v":"","koch":"Miriam"},{"d":"2026-10-15","g":"Provence-Blech","v":"","koch":"Nils"},{"d":"2026-10-16","g":"Pasta Verdura","v":"mit Parmaschinken","koch":"Nils"},{"d":"2026-10-17","g":"Kürbissuppe mit Bratwurst-Klößchen & Baguette","v":"","koch":"Nils"},{"d":"2026-10-18","g":"Knobi-Parmesan-Hähnchen mit Reis","v":"","koch":"Miriam"},{"d":"2026-10-19","g":"Green Goddess Salad","v":"mit Garnelen","koch":"Miriam"},{"d":"2026-10-20","g":"Labskaus","v":"","koch":"Nils"},{"d":"2026-10-21","g":"Spitzkohl-Hack-Pfanne mit Kartoffelstampf","v":"","koch":"Miriam"},{"d":"2026-10-23","g":"Möhrensuppe mit Baguette","v":"mit Frikadellen","koch":"Nils"},{"d":"2026-10-24","g":"Thunfischpasta","v":"","koch":"Miriam"},{"d":"2026-10-25","g":"Thai-Curry","v":"","koch":"Nils"},{"d":"2026-10-26","g":"Apfel-Sellerie-Suppe","v":"","koch":"Miriam"},{"d":"2026-10-27","g":"Feijoada","v":"","koch":"Nils"},{"d":"2026-10-28","g":"Türkische Pasta","v":"","koch":"Miriam"},{"d":"2026-10-30","g":"Schweinefilet mit Champignons in Sahnesauce","v":"","koch":"Nils"},{"d":"2026-10-31","g":"Tiefkühlpizza","v":"","koch":"Nils"},{"d":"2026-11-01","g":"Deftiger Weiße-Bohnen-Eintopf mit Kartoffeln und Speck","v":"","koch":"Miriam"},{"d":"2026-11-02","g":"Frikadellen-Brötchen mit Krautsalat","v":"","koch":"Miriam"},{"d":"2026-11-03","g":"Pasta Aglio e Olio","v":"","koch":"Nils"},{"d":"2026-11-04","g":"One Pot Spitzkohl-Pasta","v":"","koch":"Miriam"}]}</script>
+<script>
+(function(){
+  var D=JSON.parse(document.getElementById('kiteam-data').textContent);
+  var $=function(id){return document.getElementById(id)};
+  function el(t,c,x){var e=document.createElement(t); if(c) e.className=c; if(x!=null) e.textContent=x; return e;}
+  function fmt(iso){var p=iso.split('-'); return p[2]+'.'+p[1]+'.'+p[0];}
+  function dOf(iso){var p=iso.split('-'); return new Date(+p[0],+p[1]-1,+p[2]);}
+  function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+  var KNOWN={kunibert:1,gustav:1,teamchef:1};
+  function key(s){return KNOWN[s]?s:'other';}
+
+  // Avatare (einfache Illustrationen)
+  var SKIN='#F1C7A0', INK='#2A2420';
+  function face(extra){return '<circle cx="60" cy="62" r="24" fill="'+SKIN+'"/><circle cx="51" cy="60" r="2.6" fill="'+INK+'"/><circle cx="69" cy="60" r="2.6" fill="'+INK+'"/><path d="M52 71 Q60 77 68 71" stroke="'+INK+'" stroke-width="2.4" fill="none" stroke-linecap="round"/>'+(extra||'');}
+  function body(c){return '<path d="M22 120 Q24 92 60 90 Q96 92 98 120 Z" fill="'+c+'"/><rect x="53" y="82" width="14" height="10" rx="4" fill="'+SKIN+'"/>';}
+  var AV={
+    kunibert:function(){return body('var(--c-kunibert)')+'<path d="M44 92 L60 120 L76 92 Z" fill="#FFFFFF"/>'+face('<path d="M49 68 Q55 64 60 67 Q65 64 71 68 Q65 71 60 69 Q55 71 49 68 Z" fill="#6B4226"/>')+'<rect x="40" y="38" width="40" height="10" rx="3" fill="#FFFFFF"/><circle cx="46" cy="32" r="10" fill="#FFFFFF"/><circle cx="60" cy="26" r="12" fill="#FFFFFF"/><circle cx="74" cy="32" r="10" fill="#FFFFFF"/>';},
+    gustav:function(){return body('var(--c-gustav)')+face('<circle cx="51" cy="60" r="7" fill="none" stroke="'+INK+'" stroke-width="2"/><circle cx="69" cy="60" r="7" fill="none" stroke="'+INK+'" stroke-width="2"/><path d="M58 60 L62 60" stroke="'+INK+'" stroke-width="2"/>')+'<path d="M36 56 Q38 36 60 36 Q82 36 84 56 Q78 44 60 44 Q42 44 36 56 Z" fill="#8C8C8C"/><rect x="70" y="96" width="22" height="26" rx="3" fill="#8A5A34"/><rect x="73" y="101" width="16" height="19" rx="1.5" fill="#FFFFFF"/><rect x="77" y="94" width="8" height="5" rx="1.5" fill="#C9C9C9"/>';},
+    teamchef:function(){return body('var(--c-teamchef)')+'<path d="M50 90 L60 104 L70 90 Z" fill="#FFFFFF"/><path d="M58 100 L62 100 L64 116 L60 120 L56 116 Z" fill="var(--c-kunibert)"/>'+face()+'<path d="M35 60 Q34 34 60 34 Q86 34 85 58 Q80 44 66 44 Q58 50 42 48 Q37 52 35 60 Z" fill="#4A3426"/>';},
+    other:function(t){return body('var(--c-other)')+face()+'<text x="60" y="112" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="16" fill="#FFFFFF">'+t.name.charAt(0)+'</text>';}
+  };
+  function avatar(t){var k=key(t.skill); var w=document.createElement('span');
+    w.innerHTML='<svg class="av" viewBox="0 0 120 120" role="img" aria-label="'+t.name+'"><defs><clipPath id="c-'+t.skill+'"><circle cx="60" cy="60" r="60"/></clipPath></defs><g clip-path="url(#c-'+t.skill+')"><rect width="120" height="120" fill="var(--s-'+k+')"/>'+AV[k](t)+'</g></svg>';
+    return w.firstChild;}
+
+  // Hero-Gruppe: Kunibert in die Mitte
+  var order=D.team.slice(); var ki=order.findIndex(function(t){return t.skill==='kunibert'});
+  if(ki>-1 && order.length>=3){var k=order.splice(ki,1)[0]; order.splice(1,0,k);}
+  order.forEach(function(t){var a=el('a'); a.href='#p-'+t.skill; a.setAttribute('aria-label',t.name); a.appendChild(avatar(t)); $('group').appendChild(a);});
+
+  // Profile
+  D.team.forEach(function(t){
+    var k=key(t.skill), p=el('article','person'); p.id='p-'+t.skill;
+    p.style.setProperty('--pc','var(--c-'+k+')'); p.style.setProperty('--ps','var(--s-'+k+')');
+    p.appendChild(avatar(t));
+    var h=el('div'); h.appendChild(el('h3',null,t.name)); p.appendChild(h);
+    p.appendChild(el('p','role',t.rolle));
+    p.appendChild(el('p','quote','„'+t.stimme+'“'));
+    p.appendChild(el('p','about',t.kurz));
+    var ul=el('ul','can'); t.faehigkeiten.forEach(function(f){var li=el('li'), d=el('div'); d.appendChild(el('b',null,f.name)); d.appendChild(el('span',null,f.text)); li.appendChild(d); ul.appendChild(li);}); p.appendChild(ul);
+    if(t.beispiele && t.beispiele.length){var a=el('p','ask','Zum Beispiel'); var q=el('q',null,t.beispiele[0]); a.appendChild(q); p.appendChild(a);}
+    $('people').appendChild(p);
+  });
+
+  // Letzte Woche
+  var V=D.verlauf.slice().sort(function(a,b){return a.d<b.d?-1:1}); var byD={}; V.forEach(function(v){byD[v.d]=v});
+  if(V.length){
+    var last=dOf(V[V.length-1].d); var fr=new Date(last); fr.setDate(fr.getDate()-((fr.getDay()-5+7)%7));
+    var wk=$('week'); var end=new Date(fr); end.setDate(end.getDate()+6);
+    wk.appendChild(el('h3',null,'Unser Plan vom '+fmt(iso(fr)).slice(0,6)+' bis '+fmt(iso(end)).slice(0,6)));
+    var WD=['So','Mo','Di','Mi','Do','Fr','Sa'];
+    for(var i=0;i<7;i++){var d=new Date(fr); d.setDate(d.getDate()+i); var v=byD[iso(d)]; var r=el('div','day');
+      r.appendChild(el('span','wd',WD[d.getDay()]));
+      if(v){r.appendChild(el('span',null,v.g+(v.v?' '+v.v:''))); r.appendChild(el('span','who',v.koch||''));}
+      else {r.appendChild(el('span','rest',d.getDay()===4?'Reste':'nichts geplant')); r.appendChild(el('span'));}
+      wk.appendChild(r);}
+  } else { $('week').hidden=true; }
+
+  // Gerichte
+  var G=D.gerichte.filter(function(g){return g.n});
+  var bew=G.filter(function(g){return g.status!=='offen'}), neu=G.filter(function(g){return g.status==='offen'});
+  $('dish-intro').textContent=bew.length+' Gerichte, die wir schon kennen, und '+neu.length+' neue Ideen, die auf ihren ersten Einsatz warten.';
+  var tab='alle', q='', open=false, LIMIT=12;
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function(b){b.addEventListener('click',function(){tab=b.dataset.t; open=false; render();});});
+  $('q').addEventListener('input',function(e){q=e.target.value.trim().toLowerCase(); render();});
+  $('more').addEventListener('click',function(){open=true; render();});
+  function card(g){
+    var c=el('article','dish');
+    if(g.status==='offen') c.appendChild(el('span','badge neu','Neu'));
+    else if(g.beliebt==='Favorit') c.appendChild(el('span','badge fav','Liebling'));
+    c.appendChild(el('h3',null,g.n));
+    if(g.text) c.appendChild(el('p',null,g.text));
+    var m=el('div','meta'); var bits=[];
+    if(g.dauer) bits.push(g.dauer+' Min.');
+    if(g.koch) bits.push(g.koch==='beide'?'kochen beide':g.koch);
+    if(bits.length) m.appendChild(el('span',null,bits.join(' · ')));
+    if(g.rezept){var a=el('a',null,'Rezept'); a.href='https://docs.google.com/document/d/'+g.rezept+'/edit'; a.target='_blank'; a.rel='noopener'; m.appendChild(a);}
+    c.appendChild(m); return c;
+  }
+  function render(){
+    tabs.forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.t===tab))});
+    var list=G.filter(function(g){
+      if(tab==='fav' && g.beliebt!=='Favorit') return false;
+      if(tab==='neu' && g.status!=='offen') return false;
+      if(q && (g.n+' '+(g.text||'')).toLowerCase().indexOf(q)<0) return false;
+      return true;
+    });
+    list.sort(function(a,b){ if(tab==='alle' && !q) return (b.zuletzt||'').localeCompare(a.zuletzt||'') || a.n.localeCompare(b.n,'de'); return a.n.localeCompare(b.n,'de'); });
+    var box=$('dishes'); box.textContent='';
+    var show=(open||q)?list:list.slice(0,LIMIT);
+    show.forEach(function(g){box.appendChild(card(g))});
+    if(!list.length) box.appendChild(el('p','none','Nichts gefunden. Versucht ein anderes Wort.'));
+    $('more').hidden=show.length>=list.length;
+    $('more').textContent='Alle '+list.length+' zeigen';
+  }
+  render();
+
+  $('foot').textContent='Stand '+fmt(D.stand)+'';
+
+  // Teambild, sobald hochgeladen
+  var img=document.querySelector('#hero-img img');
+  img.addEventListener('load',function(){$('hero-img').hidden=false; $('group').hidden=true;});
+  img.src='team.png';
+})();
+</script>
+
+</body>
+</html>
