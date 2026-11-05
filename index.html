@@ -65,7 +65,8 @@ p{margin:0}
 .hero{padding-block:56px 40px;text-align:center}
 .group{display:flex;justify-content:center;margin-bottom:28px}
 .group .av{width:132px;height:132px;margin:0 -10px;border:5px solid var(--bg);border-radius:50%;transition:transform .2s}
-.group .av:nth-child(2){width:150px;height:150px;margin-top:-10px;position:relative;z-index:1}
+.group a:nth-child(2) .av{width:150px;height:150px;margin-top:-10px;position:relative;z-index:1}
+.group a{flex:none;display:block}
 .group a:hover .av{transform:translateY(-6px)}
 .hero-img{margin:0 auto 28px;max-width:720px;border-radius:20px;overflow:hidden}
 .hero-img img{display:block;width:100%;height:auto}
@@ -92,6 +93,8 @@ section{padding-block:64px}
 /* Profile */
 .person{background:var(--card);border-radius:22px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;min-width:0;border:1px solid var(--line)}
 .person .av{width:120px;height:120px}
+.av.photo{display:block;max-width:none;flex:none;border-radius:50%;object-fit:cover;background:var(--s-other)}
+.person .av.photo,.sheet .av.photo{box-shadow:0 0 0 4px var(--ps)}
 .person h3{font-size:30px}
 .role{font-weight:800;font-size:15px;color:var(--pc);margin-top:-8px}
 .person .about{color:var(--soft);font-size:16px}
@@ -203,7 +206,7 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
   .sheet-head{grid-template-columns:1fr;justify-items:start;gap:12px}
   .sheet-head .av{width:76px;height:76px}
   .group .av{width:96px;height:96px;margin:0 -8px}
-  .group .av:nth-child(2){width:110px;height:110px}
+  .group a:nth-child(2) .av{width:110px;height:110px}
   .steps{grid-template-columns:1fr}
   .top nav a{padding:6px 8px;font-size:14px}
   .tabs{width:100%}
@@ -310,7 +313,15 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
     teamchef:function(){return body('var(--c-teamchef)')+'<path d="M50 90 L60 104 L70 90 Z" fill="#FFFFFF"/><path d="M58 100 L62 100 L64 116 L60 120 L56 116 Z" fill="var(--c-kunibert)"/>'+face()+'<path d="M35 60 Q34 34 60 34 Q86 34 85 58 Q80 44 66 44 Q58 50 42 48 Q37 52 35 60 Z" fill="#4A3426"/>';},
     other:function(t){return body('var(--c-other)')+face()+'<text x="60" y="112" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="16" fill="#FFFFFF">'+t.name.charAt(0)+'</text>';}
   };
-  function avatar(t){var k=key(t.skill); var w=document.createElement('span');
+  // Fotos in img/<skill>.jpg. Fehlt eins, bleibt die gezeichnete Figur.
+  var PHOTO={kunibert:1,gustav:1,teamchef:1};
+  function avatar(t){
+    if(PHOTO[t.skill]){var im=document.createElement('img'); im.className='av photo'; im.src='img/'+t.skill+'.jpg'; im.alt=t.name; im.width=240; im.height=240; im.decoding='async';
+      im.addEventListener('error',function(){var f=drawn(t); if(im.parentNode) im.parentNode.replaceChild(f,im);});
+      return im;}
+    return drawn(t);
+  }
+  function drawn(t){var k=key(t.skill); var w=document.createElement('span');
     w.innerHTML='<svg class="av" viewBox="0 0 120 120" role="img" aria-label="'+t.name+'"><defs><clipPath id="c-'+t.skill+'"><circle cx="60" cy="60" r="60"/></clipPath></defs><g clip-path="url(#c-'+t.skill+')"><rect width="120" height="120" fill="var(--s-'+k+')"/>'+AV[k](t)+'</g></svg>';
     return w.firstChild;}
 
