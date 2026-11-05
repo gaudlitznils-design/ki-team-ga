@@ -78,7 +78,7 @@ section{padding-block:64px}
 /* Organigramm: Teamchef oben, Mitarbeiter darunter. --n = Anzahl der Spalten unten (Mitarbeiter + Platzhalter), setzt das Script. */
 .org{margin-top:36px;--gap:22px;--drop:30px;--n:3}
 .org-chef{position:relative;display:flex;justify-content:center;padding-bottom:var(--drop)}
-.org-chef .person{width:100%;max-width:400px}
+.org-chef .person{width:100%;max-width:360px}
 .org-chef::after{content:"";position:absolute;left:50%;bottom:0;height:var(--drop);margin-left:-1px;border-left:2px solid var(--wire)}
 .org-staff{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:var(--gap);padding-top:var(--drop)}
 .org-staff::before{content:"";position:absolute;top:0;left:calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));right:calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));border-top:2px solid var(--wire)}
@@ -95,6 +95,45 @@ section{padding-block:64px}
 .person h3{font-size:30px}
 .role{font-weight:800;font-size:15px;color:var(--pc);margin-top:-8px}
 .person .about{color:var(--soft);font-size:16px}
+/* Kompakte Karte: ganze Karte ist klickbar und öffnet die Detailansicht */
+.person{position:relative;transition:transform .2s,border-color .2s,box-shadow .2s}
+.person.clickable{cursor:pointer}
+.person.clickable:hover{transform:translateY(-4px);border-color:var(--pc);box-shadow:0 10px 28px -14px rgba(0,0,0,.35)}
+.person.clickable:hover .open{background:var(--pc);color:var(--card)}
+.open{margin-top:auto;font:inherit;font-weight:800;font-size:15px;padding:9px 18px;border-radius:999px;border:0;background:var(--ps);color:var(--ink);cursor:pointer;transition:background .2s,color .2s}
+.open::after{content:"";position:absolute;inset:0;border-radius:inherit}
+.person .open:focus-visible{outline-color:var(--pc)}
+.soon .open{background:var(--s-other);color:var(--soft)}
+/* Detailansicht */
+html:has(dialog[open]){overflow:hidden}
+.sheet{border:0;padding:0;width:min(560px,calc(100% - 32px));max-height:calc(100dvh - 48px);border-radius:24px;background:var(--card);color:var(--ink);box-shadow:0 24px 60px -20px rgba(0,0,0,.45)}
+.sheet::backdrop{background:rgba(16,22,19,.55)}
+.sheet[open]{animation:pop .22s ease-out}
+.sheet[open]::backdrop{animation:fade .22s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+@keyframes fade{from{opacity:0}}
+.sheet-in{padding:28px 28px 26px;display:flex;flex-direction:column;gap:22px}
+.sheet-head{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;padding-right:36px}
+.sheet-head .av{width:92px;height:92px}
+.sheet-head h3{font-size:32px}
+.sheet-head .role{margin-top:2px}
+.sheet .quote{align-self:flex-start;margin-top:10px}
+.sheet .quote::before{left:22px;margin-left:0}
+.sheet .about{color:var(--soft);font-size:17px}
+.sheet h4{font-family:var(--f-display);font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--soft);margin:0 0 10px}
+.sheet .can{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--ps);font-weight:700;font-size:15px;padding:5px 12px;border-radius:999px}
+.says{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.says li{background:var(--bg);border-radius:14px;padding:10px 14px;font-weight:600;font-size:16px}
+.says li::before{content:"„"}.says li::after{content:"“"}
+.close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:var(--bg);color:var(--ink);font:inherit;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.close:hover{background:var(--line)}
+.sheet-steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column;gap:12px}
+.sheet-steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;font-size:16px}
+.sheet-steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--s-teamchef);color:var(--c-teamchef);font-family:var(--f-display);font-weight:800}
+.sheet-steps b{display:block}
+.sheet-steps span{color:var(--soft);font-size:15px}
 .quote{position:relative;background:var(--ps);color:var(--ink);font-weight:600;padding:10px 16px;border-radius:16px;font-size:16px}
 .quote::before{content:"";position:absolute;top:-8px;left:50%;margin-left:-8px;border:8px solid transparent;border-top:0;border-bottom-color:var(--ps)}
 .can{list-style:none;margin:6px 0 0;padding:0;text-align:left;width:100%;display:flex;flex-direction:column;gap:10px}
@@ -158,6 +197,11 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
   .plan-row{grid-template-columns:1fr}
 }
 @media (max-width:520px){
+  .sheet{width:100%;max-width:100%;margin:auto 0 0;border-radius:24px 24px 0 0;max-height:88dvh;padding-bottom:env(safe-area-inset-bottom,0px)}
+  @keyframes pop{from{transform:translateY(40px);opacity:.4}}
+  .sheet-in{padding:24px 20px 24px}
+  .sheet-head{grid-template-columns:1fr;justify-items:start;gap:12px}
+  .sheet-head .av{width:76px;height:76px}
   .group .av{width:96px;height:96px;margin:0 -8px}
   .group .av:nth-child(2){width:110px;height:110px}
   .steps{grid-template-columns:1fr}
@@ -196,6 +240,11 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
       </div>
     </div>
   </section>
+
+  <dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+    <button class="close" type="button" id="sheet-close" aria-label="Schließen">×</button>
+    <div class="sheet-in" id="sheet-in"></div>
+  </dialog>
 
   <section id="essensplan" class="plan-band">
     <div class="wrap">
@@ -268,19 +317,49 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
   // Hero-Gruppe: Kunibert in die Mitte
   var order=D.team.slice(); var ki=order.findIndex(function(t){return t.skill==='kunibert'});
   if(ki>-1 && order.length>=3){var k=order.splice(ki,1)[0]; order.splice(1,0,k);}
-  order.forEach(function(t){var a=el('a'); a.href='#p-'+t.skill; a.setAttribute('aria-label',t.name); a.appendChild(avatar(t)); $('group').appendChild(a);});
+  var heroLinks=[]; order.forEach(function(t){var a=el('a'); a.href='#p-'+t.skill; a.setAttribute('aria-label',t.name); a.appendChild(avatar(t)); $('group').appendChild(a); heroLinks.push([a,t]);});
 
-  // Organigramm: Teamchef oben, alle anderen darunter, am Ende ein Platzhalter
+  // Organigramm: Teamchef oben, alle anderen darunter, am Ende ein Platzhalter.
+  // Karten sind kompakt, alle Details stehen in der Detailansicht (dialog#sheet).
+  var sheet=$('sheet'), sheetIn=$('sheet-in');
+  function section(title,node){var w=el('div'); w.appendChild(el('h4',null,title)); w.appendChild(node); return w;}
+  function openSheet(fill,vars){
+    sheetIn.textContent='';
+    sheet.style.setProperty('--pc',vars[0]); sheet.style.setProperty('--ps',vars[1]);
+    fill(sheetIn);
+    if(sheet.showModal) sheet.showModal(); else sheet.setAttribute('open','');
+    sheet.scrollTop=0;
+  }
+  function closeSheet(){ if(sheet.close) sheet.close(); else sheet.removeAttribute('open'); }
+  $('sheet-close').addEventListener('click',closeSheet);
+  sheet.addEventListener('click',function(e){ if(e.target===sheet) closeSheet(); });
+  function details(t){
+    var k=key(t.skill);
+    openSheet(function(box){
+      var head=el('div','sheet-head'); head.appendChild(avatar(t));
+      var h=el('div'); var h3=el('h3',null,t.name); h3.id='sheet-title'; h.appendChild(h3); h.appendChild(el('p','role',t.rolle));
+      if(t.stimme) h.appendChild(el('p','quote','„'+t.stimme+'“'));
+      head.appendChild(h); box.appendChild(head);
+      box.appendChild(el('p','about',t.kurz));
+      var ul=el('ul','can'); t.faehigkeiten.forEach(function(f){var li=el('li'), d=el('div'); d.appendChild(el('b',null,f.name)); d.appendChild(el('span',null,f.text)); li.appendChild(d); ul.appendChild(li);});
+      box.appendChild(section('Das kann ich',ul));
+      if(t.anrede && t.anrede.length){var c=el('div','chips'); t.anrede.forEach(function(a){c.appendChild(el('span',null,a))}); box.appendChild(section('So rufst du mich',c));}
+      if(t.beispiele && t.beispiele.length){var s=el('ul','says'); t.beispiele.forEach(function(b){s.appendChild(el('li',null,b))}); box.appendChild(section('Zum Beispiel',s));}
+    },['var(--c-'+k+')','var(--s-'+k+')']);
+  }
+  function personCard(cls,av,name,role,text,btn,onOpen){
+    var p=el('article','person clickable '+cls);
+    p.appendChild(av);
+    var h=el('div'); h.appendChild(el('h3',null,name)); p.appendChild(h);
+    if(role) p.appendChild(role);
+    p.appendChild(el('p','about',text));
+    var b=el('button','open',btn); b.type='button'; b.addEventListener('click',onOpen); p.appendChild(b);
+    return p;
+  }
   function profile(t){
-    var k=key(t.skill), p=el('article','person'); p.id='p-'+t.skill;
-    p.style.setProperty('--pc','var(--c-'+k+')'); p.style.setProperty('--ps','var(--s-'+k+')');
-    p.appendChild(avatar(t));
-    var h=el('div'); h.appendChild(el('h3',null,t.name)); p.appendChild(h);
-    p.appendChild(el('p','role',t.rolle));
-    p.appendChild(el('p','quote','„'+t.stimme+'“'));
-    p.appendChild(el('p','about',t.kurz));
-    var ul=el('ul','can'); t.faehigkeiten.forEach(function(f){var li=el('li'), d=el('div'); d.appendChild(el('b',null,f.name)); d.appendChild(el('span',null,f.text)); li.appendChild(d); ul.appendChild(li);}); p.appendChild(ul);
-    if(t.beispiele && t.beispiele.length){var a=el('p','ask','Zum Beispiel'); var q=el('q',null,t.beispiele[0]); a.appendChild(q); p.appendChild(a);}
+    var k=key(t.skill);
+    var p=personCard('',avatar(t),t.name,el('p','role',t.rolle),t.kurz,'Mehr über '+t.name,function(){details(t)});
+    p.id='p-'+t.skill; p.style.setProperty('--pc','var(--c-'+k+')'); p.style.setProperty('--ps','var(--s-'+k+')');
     return p;
   }
   var chef=D.team.filter(function(t){return t.skill==='teamchef'})[0];
@@ -288,16 +367,26 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
   if(chef) $('org-chef').appendChild(profile(chef)); else $('org-chef').hidden=true;
   staff.forEach(function(t){$('org-staff').appendChild(profile(t));});
   (function(){
-    var p=el('article','person soon'); p.setAttribute('aria-label','Platzhalter für einen neuen Mitarbeiter');
-    var w=document.createElement('span');
-    w.innerHTML='<svg class="av" viewBox="0 0 120 120" aria-hidden="true"><defs><clipPath id="c-soon"><circle cx="60" cy="60" r="60"/></clipPath></defs><g clip-path="url(#c-soon)"><rect width="120" height="120" fill="var(--s-other)"/><path d="M22 120 Q24 92 60 90 Q96 92 98 120 Z" fill="var(--wire)"/><circle cx="60" cy="62" r="24" fill="var(--wire)"/><text x="60" y="72" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="28" fill="var(--s-other)">?</text></g></svg>';
-    p.appendChild(w.firstChild);
-    p.appendChild(el('span','tag','Bald'));
-    p.appendChild(el('h3',null,'Noch frei'));
-    p.appendChild(el('p','about','Das Team wächst. Sobald es eine neue Aufgabe gibt, stellt der Teamchef einen neuen Assistenten ein. Es können jederzeit mehr werden.'));
-    var a=el('p','ask','So geht’s'); a.appendChild(el('q',null,'Teamchef, wir brauchen jemanden für …')); p.appendChild(a);
+    function soonAv(){var w=document.createElement('span');
+      w.innerHTML='<svg class="av" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="60" fill="var(--s-other)"/><path d="M60 90 Q96 92 98 120 L22 120 Q24 92 60 90 Z" fill="var(--wire)" clip-path="circle(60px at 60px 60px)"/><circle cx="60" cy="62" r="24" fill="var(--wire)"/><text x="60" y="72" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="28" fill="var(--s-other)">?</text></svg>';
+      return w.firstChild;}
+    var tag=el('span','tag','Bald');
+    var p=personCard('soon',soonAv(),'Noch frei',tag,'Das Team wächst. Es können jederzeit mehr werden.','So kommt jemand Neues dazu',function(){
+      openSheet(function(box){
+        var head=el('div','sheet-head'); head.appendChild(soonAv());
+        var h=el('div'); var h3=el('h3',null,'Neu im Team'); h3.id='sheet-title'; h.appendChild(h3); h.appendChild(el('p','role','Der Teamchef stellt ein')); head.appendChild(h); box.appendChild(head);
+        box.appendChild(el('p','about','Gibt es eine Aufgabe, um die sich noch keiner kümmert, bekommt sie einen eigenen Assistenten. Er steht dann hier unter dem Teamchef.'));
+        var ol=el('ol','sheet-steps');
+        [['Teamchef fragen','Sagen, wofür ihr Hilfe braucht.'],['Vorschlag','Er überlegt Name, Aufgaben und wie man ihn anspricht.'],['Freigeben','Passt alles, ist der Neue ab sofort im Team.']].forEach(function(x){var li=el('li'),d=el('div'); d.appendChild(el('b',null,x[0])); d.appendChild(el('span',null,x[1])); li.appendChild(d); ol.appendChild(li);});
+        box.appendChild(section('So geht’s',ol));
+        var s=el('ul','says'); s.appendChild(el('li',null,'Teamchef, wir brauchen jemanden für …')); box.appendChild(section('Zum Beispiel',s));
+      },['var(--c-teamchef)','var(--s-teamchef)']);
+    });
+    p.setAttribute('aria-label','Platzhalter für einen neuen Mitarbeiter');
+    p.insertBefore(tag,p.querySelector('h3').parentNode);
     $('org-staff').appendChild(p);
   })();
+  heroLinks.forEach(function(x){x[0].addEventListener('click',function(e){e.preventDefault(); details(x[1]);});});
   $('org').style.setProperty('--n',$('org-staff').children.length);
 
   // Letzte Woche
