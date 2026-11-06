@@ -82,7 +82,7 @@
       "skill": "weihnachtself",
       "rolle": "Unser Weihnachtself",
       "farbe": "#C0392B",
-      "bild": null,
+      "bild": "img/weihnachtself.jpg",
       "kurz": "Hilft bei der Weihnachtsplanung: Geschenkideen für die Kinder, wer was schenkt und was an den Feiertagen ansteht.",
       "stimme": "Wunschzettel schon geschrieben?",
       "faehigkeiten": [
@@ -110,7 +110,7 @@
       "skill": "media-mike",
       "rolle": "Unser Medien-Allrounder",
       "farbe": "#2F6FB5",
-      "bild": null,
+      "bild": "img/media-mike.jpg",
       "kurz": "Pflegt diese Seite: neue Karten, Porträts und Texte.",
       "stimme": "Lächeln, bitte!",
       "faehigkeiten": [
