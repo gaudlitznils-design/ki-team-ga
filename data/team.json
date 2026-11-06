@@ -110,6 +110,34 @@
       "beispiel": "Finanz-Frank, wie sieht der Monat aus?"
     },
     {
+      "name": "Garten-Günther",
+      "skill": "guenther",
+      "rolle": "Unser Gärtner",
+      "farbe": "#8A5A2B",
+      "bild": "img/guenther.jpg",
+      "kurz": "Kümmert sich um alles im Garten: Beete, Pflanzenpflege, Schädlinge und das Überwintern.",
+      "stimme": "Erst gießen, dann reden.",
+      "faehigkeiten": [
+        {
+          "name": "Pflanzenliste",
+          "text": "Ich weiß, was bei uns wächst und wo es steht."
+        },
+        {
+          "name": "Pflanzen bestimmen",
+          "text": "Schickt mir ein Foto, ich sage euch, was das ist."
+        },
+        {
+          "name": "Pflege-Tipps",
+          "text": "Ich sage, wann gegossen, gedüngt und geschnitten wird."
+        },
+        {
+          "name": "Überwintern",
+          "text": "Ich erinnere daran, was vor dem Frost ins Haus muss."
+        }
+      ],
+      "beispiel": "Garten-Günther, was ist das für eine Pflanze?"
+    },
+    {
       "name": "Gustav",
       "skill": "gustav",
       "rolle": "Unser Prüfer",
