@@ -2,30 +2,6 @@
   "stand": "2026-11-06",
   "team": [
     {
-      "name": "Teamchef",
-      "skill": "teamchef",
-      "rolle": "Unser Teamchef",
-      "farbe": "#6D4FA0",
-      "bild": "img/teamchef.jpg",
-      "kurz": "Stellt neue Assistenten ein und hilft den anderen, im Alltag besser zu werden.",
-      "stimme": "Neuer Kandidat? Erzähl.",
-      "faehigkeiten": [
-        {
-          "name": "Kollegen einstellen",
-          "text": "Braucht ein Thema einen eigenen Assistenten, finde ich Namen und Aufgaben."
-        },
-        {
-          "name": "Kollegen verbessern",
-          "text": "Klappt etwas im Alltag nicht, passe ich die Regeln an."
-        },
-        {
-          "name": "Ordnung halten",
-          "text": "Ich führe die Akten des Teams und arbeite Gustavs Liste ab."
-        }
-      ],
-      "beispiel": "Teamchef, ich brauche einen Assistenten fürs Auto."
-    },
-    {
       "name": "Kunibert",
       "skill": "kunibert",
       "rolle": "Unser Koch",
@@ -56,26 +32,6 @@
         }
       ],
       "beispiel": "Kunibert, was kochen wir nächste Woche?"
-    },
-    {
-      "name": "Gustav",
-      "skill": "gustav",
-      "rolle": "Unser Prüfer",
-      "farbe": "#23847E",
-      "bild": "img/gustav.jpg",
-      "kurz": "Schaut jede Woche nach, ob im Team alles stimmt, und notiert, was ihm auffällt.",
-      "stimme": "Keine Mängel. Plakette gibt's.",
-      "faehigkeiten": [
-        {
-          "name": "Rundgang",
-          "text": "Jeden Sonntagabend prüfe ich Daten und Abläufe aller Kollegen."
-        },
-        {
-          "name": "Mängel melden",
-          "text": "Was mir auffällt, schreibe ich auf. Repariert wird nur nach Absprache."
-        }
-      ],
-      "beispiel": "Gustav, prüf mal Kunibert."
     },
     {
       "name": "Weihnachtself",
@@ -128,6 +84,50 @@
         }
       ],
       "beispiel": "Media-Mike, nimm den Weihnachtself auf die Seite."
+    },
+    {
+      "name": "Gustav",
+      "skill": "gustav",
+      "rolle": "Unser Prüfer",
+      "farbe": "#23847E",
+      "bild": "img/gustav.jpg",
+      "kurz": "Schaut jede Woche nach, ob im Team alles stimmt, und notiert, was ihm auffällt.",
+      "stimme": "Keine Mängel. Plakette gibt's.",
+      "faehigkeiten": [
+        {
+          "name": "Rundgang",
+          "text": "Jeden Sonntagabend prüfe ich Daten und Abläufe aller Kollegen."
+        },
+        {
+          "name": "Mängel melden",
+          "text": "Was mir auffällt, schreibe ich auf. Repariert wird nur nach Absprache."
+        }
+      ],
+      "beispiel": "Gustav, prüf mal Kunibert."
+    },
+    {
+      "name": "Teamchef",
+      "skill": "teamchef",
+      "rolle": "Unser Teamchef",
+      "farbe": "#6D4FA0",
+      "bild": "img/teamchef.jpg",
+      "kurz": "Stellt neue Assistenten ein und hilft den anderen, im Alltag besser zu werden.",
+      "stimme": "Neuer Kandidat? Erzähl.",
+      "faehigkeiten": [
+        {
+          "name": "Kollegen einstellen",
+          "text": "Braucht ein Thema einen eigenen Assistenten, finde ich Namen und Aufgaben."
+        },
+        {
+          "name": "Kollegen verbessern",
+          "text": "Klappt etwas im Alltag nicht, passe ich die Regeln an."
+        },
+        {
+          "name": "Ordnung halten",
+          "text": "Ich führe die Akten des Teams und arbeite Gustavs Liste ab."
+        }
+      ],
+      "beispiel": "Teamchef, ich brauche einen Assistenten fürs Auto."
     }
   ]
 }

@@ -47,7 +47,8 @@ CLAUDE.md           diese Datei
 
 - `stand`: Datum der letzten Änderung, erscheint unten auf der Seite.
 - `skill`: Kennung in Kleinbuchstaben mit Bindestrich, z. B. `media-mike`. Daraus werden der Bildname und der Seitenanker `#p-<skill>`.
-- Der Eintrag mit `"skill": "teamchef"` steht oben im Organigramm, alle anderen in der Reihenfolge der Datei darunter. Ganz rechts hängt die Seite automatisch die Platzhalter-Karte „Noch frei“ an.
+- Alle Einträge außer dem Teamchef stehen in der Reihenfolge der Datei oben im Organigramm (links nach rechts, auf dem Handy von oben nach unten). Dahinter hängt die Seite automatisch die Platzhalter-Karte „Noch frei“ an.
+- Der Eintrag mit `"skill": "teamchef"` steht, egal wo in der Datei, mit Abstand darunter; alle Linien laufen bei ihm zusammen.
 - `farbe`: Teamfarbe als `#RRGGBB`. Die Seite leitet daraus Schrift-, Flächen- und Dunkelmodus-Farbe ab.
 - `bild`: Pfad zum Porträt oder `null`. Ohne Bild erscheint ein neutraler Kreis mit dem Anfangsbuchstaben in der Teamfarbe.
 - Vergebene Farben: teamchef `#6D4FA0`, kunibert `#D9861C`, gustav `#23847E`, weihnachtself `#C0392B`, media-mike `#2F6FB5`.

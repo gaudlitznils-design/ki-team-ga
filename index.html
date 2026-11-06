@@ -76,24 +76,27 @@ p{margin:0}
 
 section{padding-block:64px}
 
-/* Organigramm: Teamchef oben, Mitarbeiter darunter. --n = Anzahl der Spalten unten (Mitarbeiter + Platzhalter), setzt das Script. */
-.org{margin-top:36px;--gap:22px;--drop:30px;--n:3}
-.org-chef{position:relative;display:flex;justify-content:center;padding-bottom:var(--drop)}
-.org-chef .person{width:100%;max-width:360px}
-.org-chef::after{content:"";position:absolute;left:50%;bottom:0;height:var(--drop);margin-left:-1px;border-left:2px solid var(--wire)}
-.org-staff{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:var(--gap);padding-top:var(--drop)}
-.org-staff::before{content:"";position:absolute;top:0;left:calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));right:calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));border-top:2px solid var(--wire)}
+/* Organigramm: Mitarbeiter oben, darunter mit Abstand der Teamchef im Hintergrund, bei dem alle Linien zusammenlaufen. --n = Spalten oben (Mitarbeiter + Platzhalter), setzt das Script. */
+.org{margin-top:36px;--gap:22px;--drop:30px;--rise:56px;--n:3}
+.org-staff{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:var(--gap);padding-bottom:var(--drop)}
+.org-staff::before{content:"";position:absolute;bottom:0;left:calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));right:calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));border-top:2px solid var(--wire)}
 .org-staff>.person{position:relative}
-.org-staff>.person::before{content:"";position:absolute;left:50%;top:calc(-1 * var(--drop));height:var(--drop);margin-left:-1px;border-left:2px solid var(--wire)}
+.org-staff>.person::before{content:"";position:absolute;left:50%;top:100%;height:var(--drop);margin-left:-1px;border-left:2px solid var(--wire)}
 .org-staff>.soon::before{border-left-style:dashed}
-/* Untereinander (schmale Fenster, setzt das Script): Linie links vom Teamchef nach unten */
-.org.stack{max-width:480px;margin-left:auto;margin-right:auto;--gap:28px;--drop:28px}
-.org.stack .org-chef::after{left:20px;margin-left:0}
-.org.stack .org-staff{grid-template-columns:1fr;padding-top:0;padding-left:40px}
+.org-chef{position:relative;display:flex;justify-content:center;padding-top:var(--rise)}
+.org-chef .person{width:100%;max-width:360px}
+.org-chef::after{content:"";position:absolute;left:50%;top:0;height:var(--rise);margin-left:-1px;border-left:2px solid var(--wire)}
+/* Untereinander (schmale Fenster, setzt das Script): Linie links an allen vorbei nach unten zum Teamchef */
+.org.stack{max-width:480px;margin-left:auto;margin-right:auto;--gap:28px;--drop:0px;--rise:48px}
+.org.stack .org-staff{grid-template-columns:1fr;padding-left:40px}
 .org.stack .org-staff::before{display:none}
-.org.stack .org-staff>.person::before{left:-20px;margin-left:0;top:calc(-1 * var(--gap));height:calc(50% + var(--gap));width:20px;border-bottom:2px solid var(--wire)}
-.org.stack .org-staff>.soon::before{border-bottom-style:dashed}
-.org.stack .org-staff>.person:not(:last-child)::after{content:"";position:absolute;left:-20px;top:50%;bottom:calc(-1 * var(--gap));border-left:2px solid var(--wire)}
+.org.stack .org-staff>.person::before{left:-20px;margin-left:0;top:50%;height:auto;bottom:calc(-1 * var(--gap));width:20px;border-top:2px solid var(--wire)}
+.org.stack .org-staff>.person:last-child::before{bottom:0}
+.org.stack .org-staff>.soon::before{border-left-style:solid;border-top-style:dashed}
+.org.stack .org-staff>.person.soon::before,.org.stack .org-staff>.person.soon:not(:first-child)::after{left:-21px}
+.org.stack .org-staff>.person:not(:first-child)::after{content:"";position:absolute;left:-20px;top:calc(-1 * var(--gap));height:calc(50% + var(--gap));border-left:2px solid var(--wire)}
+.org.stack .org-chef::after{left:20px;margin-left:0;height:calc(var(--rise) / 2);width:calc(50% - 21px);border-bottom:2px solid var(--wire);border-bottom-left-radius:10px}
+.org.stack .org-chef::before{content:"";position:absolute;left:50%;margin-left:-1px;top:calc(var(--rise) / 2);height:calc(var(--rise) / 2);border-left:2px solid var(--wire)}
 /* Viele Mitarbeiter nebeneinander: Karten etwas kleiner */
 .org.many:not(.stack) .org-staff .person{padding:24px 14px 20px}
 .org.many:not(.stack) .org-staff .av{width:96px;height:96px}
@@ -254,8 +257,8 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
     <div class="wrap">
       <h2>Das sind wir</h2>
       <div class="org" id="org">
-        <div class="org-chef" id="org-chef"></div>
         <div class="org-staff" id="org-staff"></div>
+        <div class="org-chef" id="org-chef"></div>
       </div>
     </div>
   </section>
