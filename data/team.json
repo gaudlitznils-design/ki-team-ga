@@ -1,0 +1,133 @@
+{
+  "stand": "2026-11-06",
+  "team": [
+    {
+      "name": "Teamchef",
+      "skill": "teamchef",
+      "rolle": "Unser Teamchef",
+      "farbe": "#6D4FA0",
+      "bild": "img/teamchef.jpg",
+      "kurz": "Stellt neue Assistenten ein und hilft den anderen, im Alltag besser zu werden.",
+      "stimme": "Neuer Kandidat? Erzähl.",
+      "faehigkeiten": [
+        {
+          "name": "Kollegen einstellen",
+          "text": "Braucht ein Thema einen eigenen Assistenten, finde ich Namen und Aufgaben."
+        },
+        {
+          "name": "Kollegen verbessern",
+          "text": "Klappt etwas im Alltag nicht, passe ich die Regeln an."
+        },
+        {
+          "name": "Ordnung halten",
+          "text": "Ich führe die Akten des Teams und arbeite Gustavs Liste ab."
+        }
+      ],
+      "beispiel": "Teamchef, ich brauche einen Assistenten fürs Auto."
+    },
+    {
+      "name": "Kunibert",
+      "skill": "kunibert",
+      "rolle": "Unser Koch",
+      "farbe": "#D9861C",
+      "bild": "img/kunibert.jpg",
+      "kurz": "Kümmert sich um alles rund ums Abendessen: was wir kochen, was noch da ist und was es Neues gibt.",
+      "stimme": "Na, was steht an?",
+      "faehigkeiten": [
+        {
+          "name": "Woche planen",
+          "text": "Ich schaue in eure Kalender und schlage vor, wer wann was kocht."
+        },
+        {
+          "name": "Neue Gerichte finden",
+          "text": "Sagt mir, worauf ihr Lust habt, ich bringe drei Ideen mit."
+        },
+        {
+          "name": "Rezepte schreiben",
+          "text": "Aus Link, Foto oder Kochbuch mache ich ein Rezept für uns vier."
+        },
+        {
+          "name": "Vorrat merken",
+          "text": "Reste und Angebote merke ich mir und baue sie in den Plan ein."
+        },
+        {
+          "name": "Aussortieren",
+          "text": "War ein Gericht nix, fliegt es raus oder kommt seltener."
+        }
+      ],
+      "beispiel": "Kunibert, was kochen wir nächste Woche?"
+    },
+    {
+      "name": "Gustav",
+      "skill": "gustav",
+      "rolle": "Unser Prüfer",
+      "farbe": "#23847E",
+      "bild": "img/gustav.jpg",
+      "kurz": "Schaut jede Woche nach, ob im Team alles stimmt, und notiert, was ihm auffällt.",
+      "stimme": "Keine Mängel. Plakette gibt's.",
+      "faehigkeiten": [
+        {
+          "name": "Rundgang",
+          "text": "Jeden Sonntagabend prüfe ich Daten und Abläufe aller Kollegen."
+        },
+        {
+          "name": "Mängel melden",
+          "text": "Was mir auffällt, schreibe ich auf. Repariert wird nur nach Absprache."
+        }
+      ],
+      "beispiel": "Gustav, prüf mal Kunibert."
+    },
+    {
+      "name": "Weihnachtself",
+      "skill": "weihnachtself",
+      "rolle": "Unser Weihnachtself",
+      "farbe": "#C0392B",
+      "bild": null,
+      "kurz": "Hilft bei der Weihnachtsplanung: Geschenkideen für die Kinder, wer was schenkt und was an den Feiertagen ansteht.",
+      "stimme": "Wunschzettel schon geschrieben?",
+      "faehigkeiten": [
+        {
+          "name": "Ideen sammeln",
+          "text": "Ich sammle Geschenkideen für jedes Kind und sortiere sie."
+        },
+        {
+          "name": "Verwandte zuteilen",
+          "text": "Ich schlage vor, wer welches Geschenk übernimmt, damit nichts doppelt kommt."
+        },
+        {
+          "name": "Übersicht",
+          "text": "Je Kind und je Tag sehe ich, was geplant ist."
+        },
+        {
+          "name": "Termine pflegen",
+          "text": "Heiligabend und die Feiertage: wer wann wo ist, steht bei mir."
+        }
+      ],
+      "beispiel": "Weihnachtself, wer schenkt was?"
+    },
+    {
+      "name": "Media-Mike",
+      "skill": "media-mike",
+      "rolle": "Unser Medien-Allrounder",
+      "farbe": "#2F6FB5",
+      "bild": null,
+      "kurz": "Pflegt diese Seite: neue Karten, Porträts und Texte.",
+      "stimme": "Lächeln, bitte!",
+      "faehigkeiten": [
+        {
+          "name": "Seite pflegen",
+          "text": "Kommt jemand Neues ins Team, lege ich die Karte an und halte die Texte aktuell."
+        },
+        {
+          "name": "Porträts einbinden",
+          "text": "Neue Bilder bringe ich in Form und setze sie auf die Seite."
+        },
+        {
+          "name": "Porträts beschreiben",
+          "text": "Ich schreibe die Bildbeschreibung, damit jedes Porträt im Team-Stil entsteht."
+        }
+      ],
+      "beispiel": "Media-Mike, nimm den Weihnachtself auf die Seite."
+    }
+  ]
+}
