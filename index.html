@@ -86,17 +86,10 @@ section{padding-block:64px}
 .org-chef{position:relative;display:flex;justify-content:center;padding-top:var(--rise)}
 .org-chef .person{width:100%;max-width:360px}
 .org-chef::after{content:"";position:absolute;left:50%;top:0;height:var(--rise);margin-left:-1px;border-left:2px solid var(--wire)}
-/* Untereinander (schmale Fenster, setzt das Script): Linie links an allen vorbei nach unten zum Teamchef */
-.org.stack{max-width:480px;margin-left:auto;margin-right:auto;--gap:28px;--drop:0px;--rise:48px}
-.org.stack .org-staff{grid-template-columns:1fr;padding-left:40px}
-.org.stack .org-staff::before{display:none}
-.org.stack .org-staff>.person::before{left:-20px;margin-left:0;top:50%;height:auto;bottom:calc(-1 * var(--gap));width:20px;border-top:2px solid var(--wire)}
-.org.stack .org-staff>.person:last-child::before{bottom:0}
-.org.stack .org-staff>.soon::before{border-left-style:solid;border-top-style:dashed}
-.org.stack .org-staff>.person.soon::before,.org.stack .org-staff>.person.soon:not(:first-child)::after{left:-21px}
-.org.stack .org-staff>.person:not(:first-child)::after{content:"";position:absolute;left:-20px;top:calc(-1 * var(--gap));height:calc(50% + var(--gap));border-left:2px solid var(--wire)}
-.org.stack .org-chef::after{left:20px;margin-left:0;height:calc(var(--rise) / 2);width:calc(50% - 21px);border-bottom:2px solid var(--wire);border-bottom-left-radius:10px}
-.org.stack .org-chef::before{content:"";position:absolute;left:50%;margin-left:-1px;top:calc(var(--rise) / 2);height:calc(var(--rise) / 2);border-left:2px solid var(--wire)}
+/* Untereinander (schmale Fenster, setzt das Script): keine Linien, nur mehr Abstand vor dem Teamchef */
+.org.stack{max-width:480px;margin-left:auto;margin-right:auto;--gap:22px;--drop:0px;--rise:64px}
+.org.stack .org-staff{grid-template-columns:1fr}
+.org.stack .org-staff::before,.org.stack .org-staff>.person::before,.org.stack .org-staff>.person::after,.org.stack .org-chef::before,.org.stack .org-chef::after{display:none}
 /* Viele Mitarbeiter nebeneinander: Karten etwas kleiner */
 .org.many:not(.stack) .org-staff .person{padding:24px 14px 20px}
 .org.many:not(.stack) .org-staff .av{width:96px;height:96px}
