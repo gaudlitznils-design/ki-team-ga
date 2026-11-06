@@ -86,6 +86,30 @@
       "beispiel": "Media-Mike, nimm den Weihnachtself auf die Seite."
     },
     {
+      "name": "Finanz-Frank",
+      "skill": "finanzfrank",
+      "rolle": "Unser Finanzwächter",
+      "farbe": "#3E7D3A",
+      "bild": "img/finanzfrank.jpg",
+      "kurz": "Schaut auf Monatsbudget, Rücklagen und Versicherungen, ändert aber nichts.",
+      "stimme": "Erst rechnen, dann kaufen.",
+      "faehigkeiten": [
+        {
+          "name": "Monatsübersicht",
+          "text": "Ich zeige, was im Monat reinkam und rausging."
+        },
+        {
+          "name": "Rücklagen-Check",
+          "text": "Ich schaue, ob unsere Rücklagen für größere Ausgaben reichen."
+        },
+        {
+          "name": "Versicherungs-Check",
+          "text": "Ich prüfe, welche Versicherungen wir haben und was sie kosten."
+        }
+      ],
+      "beispiel": "Finanz-Frank, wie sieht der Monat aus?"
+    },
+    {
       "name": "Gustav",
       "skill": "gustav",
       "rolle": "Unser Prüfer",
