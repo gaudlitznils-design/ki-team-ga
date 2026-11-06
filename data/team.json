@@ -138,6 +138,34 @@
       "beispiel": "Garten-Günther, was ist das für eine Pflanze?"
     },
     {
+      "name": "Elektro-Eddie",
+      "skill": "elektro-eddie",
+      "rolle": "Unser Elektriker",
+      "farbe": "#B8901A",
+      "bild": "img/elektro-eddie.jpg",
+      "kurz": "Kennt jeden Stromkreis im Haus und behält Geräte und Baustellen im Blick.",
+      "stimme": "Erst die Sicherung raus!",
+      "faehigkeiten": [
+        {
+          "name": "Stromkreise",
+          "text": "Ich weiß, welche Sicherung zu welchem Raum gehört."
+        },
+        {
+          "name": "Baustellen",
+          "text": "Ich halte fest, was an der Elektrik noch offen ist."
+        },
+        {
+          "name": "Geräte und Prüfungen",
+          "text": "Ich merke mir, welche Geräte wann geprüft wurden."
+        },
+        {
+          "name": "Gefahren erkennen",
+          "text": "Ich sage klar, wann ein Fachmann ran muss."
+        }
+      ],
+      "beispiel": "Elektro-Eddie, welche Sicherung ist fürs Bad?"
+    },
+    {
       "name": "Gustav",
       "skill": "gustav",
       "rolle": "Unser Prüfer",
