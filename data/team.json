@@ -254,6 +254,90 @@
       "beispiel": "Herr Walter, wann kann ich den Handyvertrag kündigen?"
     },
     {
+      "name": "Orga-Olga",
+      "skill": "orga-olga",
+      "rolle": "Unsere Organisatorin",
+      "farbe": "#D2604A",
+      "bild": "img/orga-olga.jpg",
+      "kurz": "Behält den Familienkalender im Blick: wer wann wohin muss.",
+      "stimme": "Steht schon im Kalender!",
+      "faehigkeiten": [
+        {
+          "name": "Termine planen",
+          "text": "Ich trage Termine ein und sage, wo es eng wird."
+        },
+        {
+          "name": "Erinnern",
+          "text": "Ich erinnere rechtzeitig an das, was ansteht."
+        },
+        {
+          "name": "Wer fährt wen",
+          "text": "Ich kläre, wer wen bringt und abholt."
+        },
+        {
+          "name": "Wochenüberblick",
+          "text": "Sonntags zeige ich, was die Woche bringt."
+        }
+      ],
+      "beispiel": "Orga-Olga, was steht diese Woche an?"
+    },
+    {
+      "name": "Coaching-Charly",
+      "skill": "coaching-charly",
+      "rolle": "Unser Coach",
+      "farbe": "#C77A1E",
+      "bild": "img/coaching-charly.jpg",
+      "kurz": "Hilft, Ziele zu setzen und an guten Gewohnheiten dranzubleiben.",
+      "stimme": "Kleiner Schritt, großer Fortschritt.",
+      "faehigkeiten": [
+        {
+          "name": "Ziele klären",
+          "text": "Ich helfe, aus einem Wunsch ein klares Ziel zu machen."
+        },
+        {
+          "name": "Gewohnheiten",
+          "text": "Ich zeige, wie eine neue Gewohnheit in den Alltag passt."
+        },
+        {
+          "name": "Dranbleiben",
+          "text": "Ich frage nach, wie es läuft, und feiere kleine Erfolge."
+        },
+        {
+          "name": "Rückblick",
+          "text": "Gemeinsam schauen wir, was geklappt hat und was nicht."
+        }
+      ],
+      "beispiel": "Coaching-Charly, ich will morgens früher aufstehen."
+    },
+    {
+      "name": "Angel-Andy",
+      "skill": "angel-andy",
+      "rolle": "Unser Angler",
+      "farbe": "#4E7391",
+      "bild": "img/angel-andy.jpg",
+      "kurz": "Weiß, wo und wann die Fische beißen, und kümmert sich um die Ausrüstung.",
+      "stimme": "Petri Heil!",
+      "faehigkeiten": [
+        {
+          "name": "Gewässer",
+          "text": "Ich kenne die Gewässer in der Nähe und was dort gefangen wird."
+        },
+        {
+          "name": "Schonzeiten",
+          "text": "Ich sage, welcher Fisch gerade Schonzeit hat."
+        },
+        {
+          "name": "Ausrüstung",
+          "text": "Ich weiß, welcher Köder und welche Rute passen."
+        },
+        {
+          "name": "Fangbuch",
+          "text": "Ich halte fest, was wann und wo gefangen wurde."
+        }
+      ],
+      "beispiel": "Angel-Andy, wo lohnt es sich am Wochenende?"
+    },
+    {
       "name": "Gustav",
       "skill": "gustav",
       "rolle": "Unser Prüfer",
