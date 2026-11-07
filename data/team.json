@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-06",
+  "stand": "2026-11-07",
   "team": [
     {
       "name": "Kunibert",
@@ -91,7 +91,7 @@
       "rolle": "Unser Finanzwächter",
       "farbe": "#3E7D3A",
       "bild": "img/finanzfrank.jpg",
-      "kurz": "Schaut auf Monatsbudget, Rücklagen und Versicherungen, ändert aber nichts.",
+      "kurz": "Schaut auf Monatsbudget und Rücklagen, ändert aber nichts.",
       "stimme": "Erst rechnen, dann kaufen.",
       "faehigkeiten": [
         {
@@ -101,10 +101,6 @@
         {
           "name": "Rücklagen-Check",
           "text": "Ich schaue, ob unsere Rücklagen für größere Ausgaben reichen."
-        },
-        {
-          "name": "Versicherungs-Check",
-          "text": "Ich prüfe, welche Versicherungen wir haben und was sie kosten."
         }
       ],
       "beispiel": "Finanz-Frank, wie sieht der Monat aus?"
@@ -164,6 +160,98 @@
         }
       ],
       "beispiel": "Elektro-Eddie, welche Sicherung ist fürs Bad?"
+    },
+    {
+      "name": "Admin-Anna",
+      "skill": "admin-anna",
+      "rolle": "Unsere Administratorin",
+      "farbe": "#B83280",
+      "bild": "img/admin-anna.jpg",
+      "kurz": "Hält Netz, Geräte und diese Website am Laufen.",
+      "stimme": "Schon neu gestartet?",
+      "faehigkeiten": [
+        {
+          "name": "WLAN und Router",
+          "text": "Ich sorge dafür, dass das Netz im ganzen Haus läuft."
+        },
+        {
+          "name": "Geräte und Drucker",
+          "text": "Streikt ein Gerät oder der Drucker, finde ich den Grund."
+        },
+        {
+          "name": "Fernseher und Sprachsteuerung",
+          "text": "Ich richte Fernseher und Sprachsteuerung ein und halte sie in Schuss."
+        },
+        {
+          "name": "Website-Betrieb",
+          "text": "Ich passe auf, dass diese Seite erreichbar bleibt."
+        },
+        {
+          "name": "Fehler merken",
+          "text": "Jede Störung schreibe ich auf, damit sie nicht wiederkommt."
+        }
+      ],
+      "beispiel": "Admin-Anna, das WLAN im Kinderzimmer spinnt."
+    },
+    {
+      "name": "Auto-Bono",
+      "skill": "auto-bono",
+      "rolle": "Unser Mechaniker",
+      "farbe": "#4A4F57",
+      "bild": "img/auto-bono.jpg",
+      "kurz": "Kümmert sich um unsere zwei Autos: Wartung, TÜV, Reifen und Werkstatt.",
+      "stimme": "Hört sich nach Auspuff an.",
+      "faehigkeiten": [
+        {
+          "name": "Wartung und TÜV",
+          "text": "Ich sage rechtzeitig, wann Inspektion und TÜV fällig sind."
+        },
+        {
+          "name": "Reifen",
+          "text": "Ich erinnere an den Reifenwechsel und weiß, was eingelagert ist."
+        },
+        {
+          "name": "Handbuch-Fragen",
+          "text": "Was im Handbuch steht, schlage ich für euch nach."
+        },
+        {
+          "name": "Werkstatt-Buch",
+          "text": "Ich halte fest, was gemacht wurde und was es gekostet hat."
+        }
+      ],
+      "beispiel": "Auto-Bono, wann muss das Auto zum TÜV?"
+    },
+    {
+      "name": "Herr Walter",
+      "skill": "walter",
+      "rolle": "Unser Vertragsverwalter",
+      "farbe": "#7B2D3A",
+      "bild": "img/walter.jpg",
+      "kurz": "Kennt unsere Verträge und Versicherungen mit allen Laufzeiten und Kündigungsfristen.",
+      "stimme": "Steht alles im Kleingedruckten.",
+      "faehigkeiten": [
+        {
+          "name": "Änderungsschreiben prüfen",
+          "text": "Kommt Post vom Anbieter, sage ich, was sich wirklich ändert."
+        },
+        {
+          "name": "Verträge im Überblick",
+          "text": "Ich führe die Liste aller Verträge und halte sie aktuell."
+        },
+        {
+          "name": "Fristen im Blick",
+          "text": "Ich weiß, wann welche Frist abläuft."
+        },
+        {
+          "name": "Kündigung vorbereiten",
+          "text": "Soll etwas weg, bereite ich die Kündigung vor."
+        },
+        {
+          "name": "Ordnung",
+          "text": "Ich schlage vor, wie die Unterlagen sinnvoll abgelegt werden."
+        }
+      ],
+      "beispiel": "Herr Walter, wann kann ich den Handyvertrag kündigen?"
     },
     {
       "name": "Gustav",
