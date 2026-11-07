@@ -64,8 +64,8 @@ p{margin:0}
 /* Hero */
 .hero{padding-block:56px 40px;text-align:center}
 .group{display:flex;justify-content:center;margin-bottom:28px}
-.group .av{width:132px;height:132px;margin:0 -10px;border:5px solid var(--bg);border-radius:50%;transition:transform .2s}
-.group a.mid .av{width:150px;height:150px;margin-top:-10px;position:relative;z-index:1}
+.group .av{width:min(132px,calc((min(100vw,1040px) - 32px) / var(--hn,3) + 18px));height:auto;aspect-ratio:1;margin:0 -10px;border:5px solid var(--bg);border-radius:50%;transition:transform .2s}
+.group a.mid .av{width:min(150px,calc((min(100vw,1040px) - 32px) / var(--hn,3) + 34px));height:auto;margin-top:-10px;position:relative;z-index:1}
 .group a{flex:none;display:block;text-decoration:none}
 .group a:hover .av{transform:translateY(-6px)}
 .hero-img{margin:0 auto 28px;max-width:720px;border-radius:20px;overflow:hidden}
@@ -76,27 +76,26 @@ p{margin:0}
 
 section{padding-block:64px}
 
-/* Organigramm: Mitarbeiter oben, darunter mit Abstand der Teamchef im Hintergrund, bei dem alle Linien zusammenlaufen. --n = Spalten oben (Mitarbeiter + Platzhalter), setzt das Script. */
-.org{margin-top:36px;--gap:22px;--drop:30px;--rise:56px;--n:3}
-.org-staff{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:var(--gap);padding-bottom:var(--drop)}
-.org-staff::before{content:"";position:absolute;bottom:0;left:calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));right:calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));border-top:2px solid var(--wire)}
-.org-staff>.person{position:relative}
+/* Organigramm: Mitarbeiter oben in Reihen mit höchstens 4 Karten (letzte Reihe mittig), darunter mit Abstand der Teamchef, bei dem die Linien zusammenlaufen.
+   --cols = Karten pro Reihe (setzt das Script). Eine Reihe: Linie von jeder Karte zur Querlinie. Mehrere Reihen (.rows): Klammer unter allen Karten. */
+.org{margin-top:36px;--gap:22px;--drop:30px;--rise:56px;--cols:3}
+.org-staff{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap);padding-bottom:var(--drop)}
+.org-staff::before{content:"";position:absolute;bottom:0;left:calc((100% - (var(--cols) - 1) * var(--gap)) / (2 * var(--cols)));right:calc((100% - (var(--cols) - 1) * var(--gap)) / (2 * var(--cols)));border-top:2px solid var(--wire)}
+.org-staff>.person{position:relative;flex:0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));min-width:0}
 .org-staff>.person::before{content:"";position:absolute;left:50%;top:100%;height:var(--drop);margin-left:-1px;border-left:2px solid var(--wire)}
 .org-staff>.soon::before{border-left-style:dashed}
+.org.rows{--drop:40px}
+.org:not(.stack) .org-staff>.person{padding-left:18px;padding-right:18px}
+.org:not(.stack) .org-staff h3{font-size:clamp(22px,2.6vw,30px)}
+.org.rows .org-staff>.person::before{display:none}
+.org.rows .org-staff::before{left:0;right:0;height:18px;border:2px solid var(--wire);border-top:0;border-radius:0 0 14px 14px}
 .org-chef{position:relative;display:flex;justify-content:center;padding-top:var(--rise)}
 .org-chef .person{width:100%;max-width:360px}
 .org-chef::after{content:"";position:absolute;left:50%;top:0;height:var(--rise);margin-left:-1px;border-left:2px solid var(--wire)}
 /* Untereinander (schmale Fenster, setzt das Script): keine Linien, nur mehr Abstand vor dem Teamchef */
 .org.stack{max-width:480px;margin-left:auto;margin-right:auto;--gap:22px;--drop:0px;--rise:64px}
-.org.stack .org-staff{grid-template-columns:1fr}
+.org.stack .org-staff{display:grid;grid-template-columns:1fr}
 .org.stack .org-staff::before,.org.stack .org-staff>.person::before,.org.stack .org-staff>.person::after,.org.stack .org-chef::before,.org.stack .org-chef::after{display:none}
-/* Viele Mitarbeiter nebeneinander: Karten etwas kleiner */
-.org.many:not(.stack) .org-staff .person{padding:24px 14px 20px}
-.org.many:not(.stack) .org-staff .av{width:96px;height:96px}
-.org.many:not(.stack) .org-staff .av.initial{font-size:42px}
-.org.many:not(.stack) .org-staff h3{font-size:24px}
-.org.many:not(.stack) .org-staff .about{font-size:15px}
-.org.many:not(.stack) .org-staff .open{font-size:14px;padding:8px 14px}
 /* Platzhalter */
 .person.soon{background:transparent;border:2px dashed var(--wire);--pc:var(--soft)}
 .soon h3{color:var(--soft)}
@@ -111,7 +110,7 @@ section{padding-block:64px}
 :root[data-theme="dark"] .tone{--pc:color-mix(in oklab,var(--f) 70%,#FFFFFF);--ps:color-mix(in srgb,var(--f) 22%,#141917)}
 /* Ohne Bild: neutraler Kreis mit Anfangsbuchstaben in der Teamfarbe */
 .av.initial{display:grid;place-items:center;flex:none;box-sizing:border-box;border-radius:50%;background:var(--s-other);color:var(--pc);font-family:var(--f-display);font-weight:800;line-height:1;font-size:52px}
-.group .av.initial{font-size:58px}
+.group .av.initial{font-size:clamp(32px,4.4vw,58px)}
 .sheet-head .av.initial{font-size:40px}
 .load-error{text-align:center;color:var(--soft);padding:28px;background:var(--card);border:1px solid var(--line);border-radius:18px}
 .person .av.photo,.sheet .av.photo,.person .av.initial,.sheet .av.initial{box-shadow:0 0 0 4px var(--ps)}
@@ -396,13 +395,13 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
     $('org-staff').appendChild(p);
   })();
   heroLinks.forEach(function(x){x[0].addEventListener('click',function(e){e.preventDefault(); details(x[1]);});});
-  // Spaltenzahl unten = Mitarbeiter + Platzhalter. Ab 5 werden die Karten kleiner, unterhalb der Breite stehen sie untereinander.
-  var org=$('org'), nCols=$('org-staff').children.length;
-  org.style.setProperty('--n',nCols); org.classList.toggle('many',nCols>=5);
-  // Bei vielen Karten nebeneinander kurze Knopftexte, der volle Text bleibt als Vorlesetext
-  function labels(){var short=org.classList.contains('many')&&!org.classList.contains('stack');
+  // Höchstens 4 Karten pro Reihe; bei mehreren Reihen Klammer statt Einzellinien. Unter 860 px stehen die Karten untereinander.
+  var org=$('org'), nCards=$('org-staff').children.length, cols=Math.min(nCards,4);
+  org.style.setProperty('--cols',cols); org.classList.toggle('rows',nCards>cols);
+  // Bei 4 Karten nebeneinander kurze Knopftexte, der volle Text bleibt als Vorlesetext
+  function labels(){var short=cols>=4&&!org.classList.contains('stack');
     [].forEach.call(org.querySelectorAll('.org-staff .open'),function(b){b.textContent=short?(b.closest('.soon')?'So geht’s':'Mehr erfahren'):b.dataset.long; if(short) b.setAttribute('aria-label',b.dataset.long); else b.removeAttribute('aria-label');});}
-  var mq=window.matchMedia('(max-width:'+(nCols>=5?1000:860)+'px)');
+  var mq=window.matchMedia('(max-width:860px)');
   function stack(){org.classList.toggle('stack',mq.matches); labels();} stack();
   if(mq.addEventListener) mq.addEventListener('change',stack); else mq.addListener(stack);
 

@@ -47,8 +47,9 @@ CLAUDE.md           diese Datei
 
 - `stand`: Datum der letzten Änderung, erscheint unten auf der Seite.
 - `skill`: Kennung in Kleinbuchstaben mit Bindestrich, z. B. `media-mike`. Daraus werden der Bildname und der Seitenanker `#p-<skill>`.
-- Alle Einträge außer dem Teamchef stehen in der Reihenfolge der Datei oben im Organigramm (links nach rechts, auf dem Handy von oben nach unten). Dahinter hängt die Seite automatisch die Platzhalter-Karte „Noch frei“ an.
-- Der Eintrag mit `"skill": "teamchef"` steht, egal wo in der Datei, mit Abstand darunter; alle Linien laufen bei ihm zusammen.
+- Alle Einträge außer dem Teamchef stehen in der Reihenfolge der Datei oben im Organigramm: höchstens 4 Karten pro Reihe, die letzte Reihe mittig (auf dem Handy untereinander). Dahinter hängt die Seite automatisch die Platzhalter-Karte „Noch frei“ an.
+- Der Eintrag mit `"skill": "teamchef"` steht, egal wo in der Datei, mit Abstand darunter. Bei einer Reihe führt von jeder Karte eine Linie zu ihm, bei mehreren Reihen eine Klammer unter allen Karten. Auf dem Handy gibt es keine Linien.
+- Beliebig viele Mitglieder sind möglich, am Layout muss dafür nichts geändert werden.
 - `farbe`: Teamfarbe als `#RRGGBB`. Die Seite leitet daraus Schrift-, Flächen- und Dunkelmodus-Farbe ab.
 - `bild`: Pfad zum Porträt oder `null`. Ohne Bild erscheint ein neutraler Kreis mit dem Anfangsbuchstaben in der Teamfarbe.
 - Vergebene Farben: teamchef `#6D4FA0`, kunibert `#D9861C`, gustav `#23847E`, weihnachtself `#C0392B`, media-mike `#2F6FB5`.
