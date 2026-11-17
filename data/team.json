@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-07",
+  "stand": "2026-11-17",
   "team": [
     {
       "name": "Kunibert",
@@ -336,6 +336,26 @@
         }
       ],
       "beispiel": "Angel-Andy, wo lohnt es sich am Wochenende?"
+    },
+    {
+      "name": "Roy Uggs",
+      "skill": "roy-uggs",
+      "rolle": "Unser Übersetzer für UX und Business",
+      "farbe": "#1E3A6B",
+      "bild": "img/roy-uggs.jpg",
+      "kurz": "Hilft Nils zu zeigen, was gute Gestaltung wirtschaftlich bringt, und hält seine Ideen dazu zusammen.",
+      "stimme": "Ehrlich gerechnet, bitte.",
+      "faehigkeiten": [
+        {
+          "name": "Ideen merken",
+          "text": "Jede Idee zum Thema landet bei mir sicher in der Sammlung."
+        },
+        {
+          "name": "Wirkung sammeln",
+          "text": "Lob, Zitate und Zahlen trage ich ein, damit nichts verloren geht."
+        }
+      ],
+      "beispiel": "Roy, merk dir eine Idee für den nächsten Post."
     },
     {
       "name": "Gustav",
