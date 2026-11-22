@@ -15,7 +15,7 @@ Umgekehrt gehören Layout, Farben der Seite selbst und Verhalten nicht in `data/
 ```
 index.html          Seite: HTML, CSS und JavaScript (lädt data/*.json per fetch)
 data/team.json      Teammitglieder (Organigramm, Detailansicht, Köpfe oben)
-data/gerichte.json  Gerichte-Liste und Verlauf (Essensplan der letzten Woche)
+data/gerichte.json  Gerichte-Liste; verlauf nur Ersatz für den Live-Wochenplan
 img/<skill>.jpg     Porträts, eins je Teammitglied
 .nojekyll           GitHub Pages ohne Jekyll ausliefern
 README.md           Kurzbeschreibung
@@ -79,7 +79,23 @@ CLAUDE.md           diese Datei
 
 - Die Seite nutzt bei Gerichten: `n` (Name, Pflicht), `text`, `status` (`"offen"` = neu zum Ausprobieren, sonst bekannt), `beliebt` (`"Favorit"` = Liebling), `koch` (`"beide"` wird zu „kochen beide“), `dauer` (Minuten), `rezept` (ID eines Google Docs, ergibt den Link „Rezept“), `zuletzt` (Sortierung).
 - Weitere Felder aus der Gerichte-DB (`aufwand`, `solo`, `saison`, `basis`, `eiweiss`, `varianten`) dürfen drinstehen, werden aber nicht angezeigt.
-- `verlauf`: gekochte Abende. Die Seite zeigt die Woche Freitag bis Donnerstag, in die der letzte Eintrag fällt.
+- `verlauf`: nur noch der **Ersatz**, falls der Live-Wochenplan (siehe unten) nicht lädt. Dann zeigt die Seite wie früher die Woche Freitag bis Donnerstag, in die der letzte Eintrag fällt.
+- `rezept` wird auch im Wochenplan genutzt: Steht ein Gericht dort mit gleichem Namen wie in `gerichte`, erscheint daneben der Link „Rezept“.
+
+## Wochenplan (live aus Google Sheets)
+
+Die Wochenansicht im Abschnitt Essensplan lädt den Plan live aus dem im Web veröffentlichten Tab **Verlauf** der Gerichte-DB:
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1vTLKSD6NGHIiTl33GfQa0dpWdMLv830pj5JikuVwsweEjrAvn_FExhWzu8eTBkGk828w16RplYroPI2/pub?gid=1003&single=true&output=csv
+
+(Ansicht als Tabelle: dieselbe Adresse mit `pubhtml` statt `pub` und ohne `&output=csv`.) Die Adresse steht in `index.html` als `PLAN_CSV`.
+
+- Angezeigt wird die Woche Freitag bis Donnerstag, in der heute liegt, mit heute hervorgehoben. Steht für die nächste Woche schon etwas im Verlauf, kommt sie darunter.
+- Pro Tag: Gericht mit Variante, Koch, darunter klein die Zutaten. Andere Mahlzeiten als Abendessen bekommen ein kleines Etikett (z. B. „WE-Mittag“). Ein Donnerstag ohne Eintrag zeigt „Reste“.
+- Die Seite liest die Spalten über die Kopfzeile: `Datum`, `Wochentag`, `Mahlzeit`, `Gericht`, `Variante`, `Koch`, `Neu?`, `Zutaten`. **Diese Spaltennamen im Tab Verlauf dürfen sich nicht ändern.** Die Reihenfolge der Spalten ist egal, neue Spalten stören nicht.
+- `Datum` muss als TT.MM.JJJJ kommen. Zeilen ohne gültiges Datum oder ohne Gericht werden übersprungen.
+- Lädt die CSV nicht (offline, gesperrt, nach 8 Sekunden keine Antwort), nimmt die Seite `verlauf` aus `data/gerichte.json`.
+- Google aktualisiert die veröffentlichte CSV mit einigen Minuten Verzögerung.
 
 ## Bilder
 
@@ -95,4 +111,4 @@ Die Seite lädt ihre Daten per `fetch`, direkt als Datei geöffnet (`file://`) f
 python3 -m http.server
 ```
 
-Dann http://localhost:8000 im Browser öffnen. Prüfen: Organigramm, Detailansicht (Klick auf eine Karte), Handy-Breite, Dunkelmodus.
+Dann http://localhost:8000 im Browser öffnen. Prüfen: Organigramm, Detailansicht (Klick auf eine Karte), Wochenplan (live aus Google Sheets, sonst der Ersatz), Handy-Breite, Dunkelmodus.

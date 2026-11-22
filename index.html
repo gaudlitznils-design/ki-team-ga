@@ -179,6 +179,17 @@ html:has(dialog[open]){overflow:hidden}
 .day .wd{font-weight:800;color:var(--soft)}
 .day .who{font-size:13px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--bg);color:var(--soft);white-space:nowrap}
 .day .rest{color:var(--soft);font-style:italic}
+.day .meal{min-width:0}
+.day .meal+.meal{margin-top:6px}
+.day .tag{display:inline-block;font-size:12px;font-weight:800;color:var(--soft);margin-right:6px}
+.day .zut{display:block;font-size:13px;color:var(--soft);line-height:1.4;margin-top:2px}
+.day .rez{margin-left:8px;font-size:13px;font-weight:800;color:var(--c-teamchef);text-decoration:none;white-space:nowrap}
+.day .rez:hover{text-decoration:underline}
+.day.today{background:var(--s-kunibert);border-top-color:transparent;border-radius:12px;margin:0 -10px;padding:8px 10px}
+.day.today+.day{border-top-color:transparent}
+.day.today .wd{color:var(--c-kunibert)}
+.day .now{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--c-kunibert);line-height:1}
+.week h3.next{margin-top:22px}
 .facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
 .facts li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
 .facts .ic{width:44px;height:44px;border-radius:12px;background:var(--card);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:15px;color:var(--c-kunibert)}
@@ -405,19 +416,43 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
   function stack(){org.classList.toggle('stack',mq.matches); labels();} stack();
   if(mq.addEventListener) mq.addEventListener('change',stack); else mq.addListener(stack);
 
-  // Letzte Woche
-  var V=D.verlauf.slice().sort(function(a,b){return a.d<b.d?-1:1}); var byD={}; V.forEach(function(v){byD[v.d]=v});
-  if(V.length){
-    var last=dOf(V[V.length-1].d); var fr=new Date(last); fr.setDate(fr.getDate()-((fr.getDay()-5+7)%7));
-    var wk=$('week'); var end=new Date(fr); end.setDate(end.getDate()+6);
-    wk.appendChild(el('h3',null,'Unser Plan vom '+fmt(iso(fr)).slice(0,6)+' bis '+fmt(iso(end)).slice(0,6)));
-    var WD=['So','Mo','Di','Mi','Do','Fr','Sa'];
-    for(var i=0;i<7;i++){var d=new Date(fr); d.setDate(d.getDate()+i); var v=byD[iso(d)]; var r=el('div','day');
-      r.appendChild(el('span','wd',WD[d.getDay()]));
-      if(v){r.appendChild(el('span',null,v.g+(v.v?' '+v.v:''))); r.appendChild(el('span','who',v.koch||''));}
+  // Wochenplan: live aus dem veröffentlichten Tab „Verlauf“ (CSV), sonst verlauf aus data/gerichte.json
+  var REZ={}; D.gerichte.forEach(function(g){ if(g.n && g.rezept) REZ[g.n.trim().toLowerCase()]=g.rezept; });
+  var WD=['So','Mo','Di','Mi','Do','Fr','Sa'];
+  function friOf(d){var f=new Date(d.getFullYear(),d.getMonth(),d.getDate()); f.setDate(f.getDate()-((f.getDay()-5+7)%7)); return f;}
+  function addDays(d,n){var x=new Date(d); x.setDate(x.getDate()+n); return x;}
+  function meal(v){
+    var m=el('div','meal');
+    if(v.mahlzeit && !/^abend/i.test(v.mahlzeit)) m.appendChild(el('span','tag',v.mahlzeit));
+    m.appendChild(document.createTextNode(v.g+(v.v?' '+v.v:'')));
+    var id=REZ[(v.g||'').trim().toLowerCase()];
+    if(id){var a=el('a','rez','Rezept'); a.href='https://docs.google.com/document/d/'+id+'/edit'; a.target='_blank'; a.rel='noopener'; m.appendChild(a);}
+    if(v.zutaten) m.appendChild(el('span','zut',v.zutaten));
+    return m;
+  }
+  function weekBlock(box,fr,byD,title,cls){
+    var end=addDays(fr,6), today=iso(new Date());
+    var h=el('h3',cls||null,title+fmt(iso(fr)).slice(0,6)+' bis '+fmt(iso(end)).slice(0,6)); box.appendChild(h);
+    for(var i=0;i<7;i++){var d=addDays(fr,i), k=iso(d), list=byD[k]||[], r=el('div','day'+(k===today?' today':''));
+      var wd=el('span','wd',WD[d.getDay()]); if(k===today) wd.appendChild(el('span','now','heute')); r.appendChild(wd);
+      if(list.length){var c=el('div'); list.forEach(function(v){c.appendChild(meal(v));}); r.appendChild(c);
+        var who=[]; list.forEach(function(v){ if(v.koch && who.indexOf(v.koch)<0) who.push(v.koch); }); r.appendChild(el('span','who',who.join(' & ')));}
       else {r.appendChild(el('span','rest',d.getDay()===4?'Reste':'nichts geplant')); r.appendChild(el('span'));}
-      wk.appendChild(r);}
-  } else { $('week').hidden=true; }
+      box.appendChild(r);}
+  }
+  function showWeeks(V,live){
+    var wk=$('week'); wk.textContent=''; wk.hidden=false;
+    var byD={}; V.forEach(function(v){ if(!v.d||!v.g) return; (byD[v.d]=byD[v.d]||[]).push(v); });
+    var keys=Object.keys(byD).sort();
+    if(!keys.length){ wk.hidden=true; return; }
+    // live: die Woche, in der heute liegt; Ersatz wie bisher: die Woche des letzten Eintrags
+    var fr=live?friOf(new Date()):friOf(dOf(keys[keys.length-1]));
+    weekBlock(wk,fr,byD,'Unser Plan vom ');
+    var nfr=addDays(fr,7), nend=iso(addDays(nfr,6)), nstart=iso(nfr);
+    if(keys.some(function(k){return k>=nstart && k<=nend;})) weekBlock(wk,nfr,byD,'Nächste Woche: ','next');
+  }
+  PLAN.then(function(V){ showWeeks(V,true); })
+      .catch(function(e){ console.warn('Wochenplan aus Google Sheets nicht geladen, nehme data/gerichte.json:',e); showWeeks(D.verlauf,false); });
 
   // Gerichte
   var G=D.gerichte.filter(function(g){return g.n});
@@ -466,6 +501,44 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
   img.addEventListener('load',function(){$('hero-img').hidden=false; $('group').hidden=true;});
   img.src='team.png';
   }
+
+  // Veröffentlichter Tab „Verlauf“ der Gerichte-DB als CSV. Spalten werden über die Kopfzeile gefunden.
+  var PLAN_CSV='https://docs.google.com/spreadsheets/d/e/2PACX-1vTLKSD6NGHIiTl33GfQa0dpWdMLv830pj5JikuVwsweEjrAvn_FExhWzu8eTBkGk828w16RplYroPI2/pub?gid=1003&single=true&output=csv';
+  function parseCSV(t){
+    var rows=[], row=[], f='', q=false, i=0, c;
+    if(t.charCodeAt(0)===0xFEFF) t=t.slice(1);
+    for(;i<t.length;i++){c=t[i];
+      if(q){ if(c==='"'){ if(t[i+1]==='"'){f+='"';i++;} else q=false; } else f+=c; }
+      else if(c==='"') q=true;
+      else if(c===','){ row.push(f); f=''; }
+      else if(c==='\n'||c==='\r'){ if(c==='\r'&&t[i+1]==='\n') i++; row.push(f); rows.push(row); row=[]; f=''; }
+      else f+=c;
+    }
+    if(f!==''||row.length){ row.push(f); rows.push(row); }
+    return rows;
+  }
+  function planFromCSV(t){
+    var rows=parseCSV(t); if(!rows.length) throw new Error('CSV leer');
+    var head=rows[0].map(function(h){return h.trim().toLowerCase();});
+    function col(n){var i=head.indexOf(n.toLowerCase()); return i;}
+    var C={d:col('Datum'),g:col('Gericht'),v:col('Variante'),k:col('Koch'),m:col('Mahlzeit'),z:col('Zutaten')};
+    if(C.d<0||C.g<0) throw new Error('Spalten Datum/Gericht fehlen');
+    function get(r,i){return i<0?'':(r[i]||'').trim();}
+    var out=[];
+    rows.slice(1).forEach(function(r){
+      var m=/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/.exec(get(r,C.d)); if(!m||!get(r,C.g)) return;
+      out.push({d:m[3]+'-'+('0'+m[2]).slice(-2)+'-'+('0'+m[1]).slice(-2), g:get(r,C.g), v:get(r,C.v), koch:get(r,C.k), mahlzeit:get(r,C.m), zutaten:get(r,C.z)});
+    });
+    if(!out.length) throw new Error('keine Einträge');
+    return out;
+  }
+  var PLAN=new Promise(function(ok,fail){
+    var timer=setTimeout(function(){ fail(new Error('Zeitüberschreitung')); },8000);
+    fetch(PLAN_CSV,{cache:'no-store'}).then(function(r){ if(!r.ok) throw new Error('CSV '+r.status); return r.text(); })
+      .then(function(text){ clearTimeout(timer); ok(planFromCSV(text)); })
+      .catch(function(e){ clearTimeout(timer); fail(e); });
+  });
+  PLAN.catch(function(){});
 
   function load(u){return fetch(u,{cache:'no-cache'}).then(function(r){if(!r.ok) throw new Error(u+' '+r.status); return r.json();});}
   Promise.all([load('data/team.json'),load('data/gerichte.json')])
