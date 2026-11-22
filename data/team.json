@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17",
+  "stand": "2026-11-22",
   "team": [
     {
       "name": "Kunibert",
@@ -12,7 +12,7 @@
       "faehigkeiten": [
         {
           "name": "Woche planen",
-          "text": "Ich schaue in eure Kalender und schlage vor, wer wann was kocht."
+          "text": "Jeden Mittwoch schaue ich von selbst in eure Kalender und schlage vor, wer wann was kocht."
         },
         {
           "name": "Neue Gerichte finden",
