@@ -172,7 +172,11 @@ html:has(dialog[open]){overflow:hidden}
 .steps .when{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--soft)}
 .steps b{display:block;font-family:var(--f-display);font-size:21px;margin:2px 0 6px}
 .steps p{font-size:15px;color:var(--soft)}
-.plan-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:36px;align-items:start}
+.weeks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:32px;align-items:start}
+.week.empty{background:transparent;border:2px dashed color-mix(in srgb,var(--c-kunibert) 45%,transparent);color:var(--soft);font-size:15px}
+.week.empty p+p{margin-top:6px}
+.plan-band .sub{font-size:clamp(26px,3.6vw,34px);margin-top:64px}
+.plan-band .sub+.intro{margin-top:8px}
 .week{background:var(--card);border-radius:18px;padding:22px 22px 18px}
 .week h3{font-size:20px;margin-bottom:12px}
 .day{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:15px}
@@ -189,9 +193,8 @@ html:has(dialog[open]){overflow:hidden}
 .day.today+.day{border-top-color:transparent}
 .day.today .wd{color:var(--c-kunibert)}
 .day .now{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--c-kunibert);line-height:1}
-.week h3.next{margin-top:22px}
-.facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
-.facts li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.facts{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px}
+.facts li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;min-width:0}
 .facts .ic{width:44px;height:44px;border-radius:12px;background:var(--card);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:15px;color:var(--c-kunibert)}
 .facts b{display:block}
 .facts span{color:var(--soft);font-size:15px}
@@ -218,7 +221,8 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
 
 @media (max-width:860px){
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .plan-row{grid-template-columns:1fr}
+  .weeks{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:520px){
   .sheet{width:100%;max-width:100%;margin:auto 0 0;border-radius:24px 24px 0 0;max-height:88dvh;padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -230,6 +234,7 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
   .group a.mid .av{width:min(110px,calc((100vw - 32px) / var(--hn,3) + 30px));height:auto}
   .group .av.initial{font-size:40px}
   .steps{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
   .top nav a{padding:6px 8px;font-size:14px}
   .tabs{width:100%}
   .tab{flex:1;padding:7px 6px}
@@ -273,23 +278,28 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
 
   <section id="essensplan" class="plan-band">
     <div class="wrap">
-      <h2>So entsteht unser Essensplan</h2>
-      <p class="intro">Kunibert plant das Abendessen von Freitag bis Donnerstag. Ein paar Minuten pro Woche, dann steht der Plan.</p>
+      <h2>Unser Essensplan</h2>
+      <p class="intro">Was bei uns von Freitag bis Donnerstag auf den Tisch kommt. Kunibert plant, wir entscheiden.</p>
+      <div class="weeks" id="week"></div>
+
+      <h3 class="sub">So entsteht er</h3>
+      <p class="intro">Ein paar Minuten pro Woche, dann steht der Plan.</p>
       <ol class="steps">
-        <li><span class="when">Mittwochabend</span><b>Fragen</b><p>„Kunibert, plan die Woche.“ Reste oder Wünsche gleich dazusagen.</p></li>
-        <li><span class="when">Sofort</span><b>Vorschlag</b><p>Er kennt unsere Termine und weiß, wer wann kocht und wie viel Zeit ist.</p></li>
-        <li><span class="when">Gemeinsam</span><b>Anpassen</b><p>Tauschen, was nicht passt. Dann „eintragen“ sagen.</p></li>
-        <li><span class="when">Freitagmorgen</span><b>Einkaufen</b><p>Der Plan kommt nach Trello, Nils kauft ein.</p></li>
+        <li><span class="when">Unter der Woche</span><b>Merken</b><p>Wünsche, Reste und Angebote einfach Kunibert sagen, z.&nbsp;B. „Wir müssten mal wieder Gulasch essen“ oder „Lachs ist im Angebot“.</p></li>
+        <li><span class="when">Mittwochabend</span><b>Planen</b><p>„Kunibert, plan die Woche.“ Er liest unsere Kalender und seinen Merkzettel und schlägt für jeden Tag Koch, Gericht und Zutaten vor.</p></li>
+        <li><span class="when">Gemeinsam</span><b>Anpassen</b><p>Passt ein Tag nicht, bringt er drei andere Gerichte zur Wahl. Passt alles, „eintragen“ sagen.</p></li>
+        <li><span class="when">Freitagmorgen</span><b>Einkaufen</b><p>Der Plan kommt nach Trello und hier auf die Seite. Nils kauft ein, die Zutaten stehen bei jedem Gericht.</p></li>
       </ol>
-      <div class="plan-row">
-        <div class="week" id="week"></div>
-        <ul class="facts">
-          <li><span class="ic">17:45</span><div><b>Gegessen wird um Viertel vor sechs</b><span>Unter der Woche gibt es nur, was bis dahin gut zu schaffen ist.</span></div></li>
-          <li><span class="ic">Sa</span><div><b>Aufwändiges am Wochenende</b><span>Schmorgerichte und Großprojekte kommen auf Samstag oder Sonntag.</span></div></li>
-          <li><span class="ic">Neu</span><div><b>Jede Woche etwas Neues</b><span>Mindestens ein neues Gericht ist dabei. Schmeckt es nicht, sagt es Kunibert.</span></div></li>
-          <li><span class="ic">Do</span><div><b>Donnerstag ist Resteessen</b><span>Was übrig ist, wird gegessen. Reste und Angebote plant Kunibert mit ein.</span></div></li>
-        </ul>
-      </div>
+
+      <h3 class="sub">Darauf achtet Kunibert</h3>
+      <ul class="facts">
+        <li><span class="ic">17:45</span><div><b>Gegessen wird um Viertel vor sechs</b><span>Unter der Woche gibt es nur, was bis dahin gut zu schaffen ist.</span></div></li>
+        <li><span class="ic">Fr</span><div><b>Freitags kocht Nils</b><span>Sonst kocht, wer tagsüber die Kinder hatte. Ansonsten wechseln wir uns ab.</span></div></li>
+        <li><span class="ic">Sa</span><div><b>Aufwändiges am Wochenende</b><span>Schmorgerichte und Großprojekte kommen auf Samstag oder Sonntag, im Herbst und Winter öfter.</span></div></li>
+        <li><span class="ic">30</span><div><b>Wenig Zeit? Blitzgericht</b><span>An knappen Tagen gibt es etwas, das in 30 Minuten fertig ist, oder etwas Vorgekochtes.</span></div></li>
+        <li><span class="ic">Neu</span><div><b>Ein bis drei neue Gerichte</b><span>Je ruhiger die Woche, desto mehr Neues ist dabei. Schmeckt etwas nicht, sagt es Kunibert.</span></div></li>
+        <li><span class="ic">Do</span><div><b>Donnerstag ist Resteessen</b><span>Was übrig ist, wird gegessen. Reste und Angebote plant Kunibert vorher schon mit ein.</span></div></li>
+      </ul>
     </div>
   </section>
 
@@ -430,9 +440,9 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
     if(v.zutaten) m.appendChild(el('span','zut',v.zutaten));
     return m;
   }
-  function weekBlock(box,fr,byD,title,cls){
-    var end=addDays(fr,6), today=iso(new Date());
-    var h=el('h3',cls||null,title+fmt(iso(fr)).slice(0,6)+' bis '+fmt(iso(end)).slice(0,6)); box.appendChild(h);
+  function weekBlock(wrap,fr,byD,title){
+    var end=addDays(fr,6), today=iso(new Date()), box=el('div','week'); wrap.appendChild(box);
+    box.appendChild(el('h3',null,title+fmt(iso(fr)).slice(0,6)+' bis '+fmt(iso(end)).slice(0,6)));
     for(var i=0;i<7;i++){var d=addDays(fr,i), k=iso(d), list=byD[k]||[], r=el('div','day'+(k===today?' today':''));
       var wd=el('span','wd',WD[d.getDay()]); if(k===today) wd.appendChild(el('span','now','heute')); r.appendChild(wd);
       if(list.length){var c=el('div'); list.forEach(function(v){c.appendChild(meal(v));}); r.appendChild(c);
@@ -447,9 +457,11 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
     if(!keys.length){ wk.hidden=true; return; }
     // live: die Woche, in der heute liegt; Ersatz wie bisher: die Woche des letzten Eintrags
     var fr=live?friOf(new Date()):friOf(dOf(keys[keys.length-1]));
-    weekBlock(wk,fr,byD,'Unser Plan vom ');
+    weekBlock(wk,fr,byD,live?'Diese Woche: ':'Unser Plan vom ');
     var nfr=addDays(fr,7), nend=iso(addDays(nfr,6)), nstart=iso(nfr);
-    if(keys.some(function(k){return k>=nstart && k<=nend;})) weekBlock(wk,nfr,byD,'Nächste Woche: ','next');
+    if(keys.some(function(k){return k>=nstart && k<=nend;})) weekBlock(wk,nfr,byD,'Nächste Woche: ');
+    else if(live){ var e=el('div','week empty'); e.appendChild(el('h3',null,'Nächste Woche: '+fmt(nstart).slice(0,6)+' bis '+fmt(nend).slice(0,6)));
+      e.appendChild(el('p',null,'Noch nicht geplant.')); e.appendChild(el('p',null,'Kunibert plant meist mittwochabends, dann steht die Woche hier.')); wk.appendChild(e); }
   }
   PLAN.then(function(V){ showWeeks(V,true); })
       .catch(function(e){ console.warn('Wochenplan aus Google Sheets nicht geladen, nehme data/gerichte.json:',e); showWeeks(D.verlauf,false); });

@@ -90,7 +90,8 @@ https://docs.google.com/spreadsheets/d/e/2PACX-1vTLKSD6NGHIiTl33GfQa0dpWdMLv830p
 
 (Ansicht als Tabelle: dieselbe Adresse mit `pubhtml` statt `pub` und ohne `&output=csv`.) Die Adresse steht in `index.html` als `PLAN_CSV`.
 
-- Angezeigt wird die Woche Freitag bis Donnerstag, in der heute liegt, mit heute hervorgehoben. Steht für die nächste Woche schon etwas im Verlauf, kommt sie darunter.
+- Angezeigt wird die Woche Freitag bis Donnerstag, in der heute liegt, mit heute hervorgehoben, daneben die nächste Woche (auf dem Handy darunter). Steht für die nächste Woche noch nichts im Verlauf, zeigt die Seite dort „Noch nicht geplant“.
+- Der Abschnitt Essensplan beginnt mit dem Plan. Danach kommen „So entsteht er“ (Ablauf nach Kuniberts Fähigkeit „Woche planen“) und „Darauf achtet Kunibert“. Diese Texte stehen in `index.html` und müssen bei Änderungen am Ablauf von Hand nachgezogen werden.
 - Pro Tag: Gericht mit Variante, Koch, darunter klein die Zutaten. Andere Mahlzeiten als Abendessen bekommen ein kleines Etikett (z. B. „WE-Mittag“). Ein Donnerstag ohne Eintrag zeigt „Reste“.
 - Die Seite liest die Spalten über die Kopfzeile: `Datum`, `Wochentag`, `Mahlzeit`, `Gericht`, `Variante`, `Koch`, `Neu?`, `Zutaten`. **Diese Spaltennamen im Tab Verlauf dürfen sich nicht ändern.** Die Reihenfolge der Spalten ist egal, neue Spalten stören nicht.
 - `Datum` muss als TT.MM.JJJJ kommen. Zeilen ohne gültiges Datum oder ohne Gericht werden übersprungen.
