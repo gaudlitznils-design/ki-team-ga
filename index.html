@@ -286,8 +286,8 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
       <p class="intro">Ein paar Minuten pro Woche, dann steht der Plan.</p>
       <ol class="steps">
         <li><span class="when">Unter der Woche</span><b>Merken</b><p>Wünsche, Reste und Angebote einfach Kunibert sagen, z.&nbsp;B. „Wir müssten mal wieder Gulasch essen“ oder „Lachs ist im Angebot“.</p></li>
-        <li><span class="when">Mittwochabend</span><b>Planen</b><p>„Kunibert, plan die Woche.“ Er liest unsere Kalender und seinen Merkzettel und schlägt für jeden Tag Koch, Gericht und Zutaten vor.</p></li>
-        <li><span class="when">Gemeinsam</span><b>Anpassen</b><p>Passt ein Tag nicht, bringt er drei andere Gerichte zur Wahl. Passt alles, „eintragen“ sagen.</p></li>
+        <li><span class="when">Mittwochnachmittag</span><b>Planen</b><p>Kunibert plant von selbst und schickt den Plan aufs Handy. Er liest unsere Kalender und seinen Merkzettel und schlägt für jeden Tag Koch, Gericht und Zutaten vor.</p></li>
+        <li><span class="when">Gemeinsam</span><b>Anpassen</b><p>Wir antworten im selben Chat. Passt ein Tag nicht, bringt er drei andere Gerichte zur Wahl. Passt alles, „eintragen“ sagen.</p></li>
         <li><span class="when">Freitagmorgen</span><b>Einkaufen</b><p>Der Plan kommt nach Trello und hier auf die Seite. Nils kauft ein, die Zutaten stehen bei jedem Gericht.</p></li>
       </ol>
 
@@ -461,7 +461,7 @@ footer{padding-block:28px 48px;text-align:center;color:var(--soft);font-size:14p
     var nfr=addDays(fr,7), nend=iso(addDays(nfr,6)), nstart=iso(nfr);
     if(keys.some(function(k){return k>=nstart && k<=nend;})) weekBlock(wk,nfr,byD,'Nächste Woche: ');
     else if(live){ var e=el('div','week empty'); e.appendChild(el('h3',null,'Nächste Woche: '+fmt(nstart).slice(0,6)+' bis '+fmt(nend).slice(0,6)));
-      e.appendChild(el('p',null,'Noch nicht geplant.')); e.appendChild(el('p',null,'Kunibert plant meist mittwochabends, dann steht die Woche hier.')); wk.appendChild(e); }
+      e.appendChild(el('p',null,'Noch nicht geplant.')); e.appendChild(el('p',null,'Kunibert plant mittwochs von selbst. Sobald wir „eintragen“ sagen, steht die Woche hier.')); wk.appendChild(e); }
   }
   PLAN.then(function(V){ showWeeks(V,true); })
       .catch(function(e){ console.warn('Wochenplan aus Google Sheets nicht geladen, nehme data/gerichte.json:',e); showWeeks(D.verlauf,false); });
