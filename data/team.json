@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-22",
+  "stand": "2026-11-24",
   "team": [
     {
       "name": "Kunibert",
@@ -353,6 +353,10 @@
         {
           "name": "Wirkung sammeln",
           "text": "Lob, Zitate und Zahlen trage ich ein, damit nichts verloren geht."
+        },
+        {
+          "name": "Folienbilder",
+          "text": "Ich beschreibe Bilder im Pop-Art-Stil, damit die Folien wie aus einem Guss aussehen."
         }
       ],
       "beispiel": "Roy, merk dir eine Idee für den nächsten Post."
